@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MonoUnit.iml" filepath="$PROJECT_DIR$/MonoUnit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Monologue/Monologue.iml" filepath="$PROJECT_DIR$/Monologue/Monologue.iml" />
+    </modules>
+  </component>
+</project>

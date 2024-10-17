@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Monolith
+  datasource:
+    url: jdbc:mysql://
+    username:
+    password:
+monolith:
+  endpoint: https://
+  token:

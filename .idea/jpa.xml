@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" newRepositoryParent="org.springframework.data.jpa.repository.JpaRepository">
+    <option name="reLastEntityCreationPackage" value="Monolith/src/main/kotlin/vis/rhynia/monolith/core/element/entity" />
+    <option name="reverseEngineeringLastDbConnectionId" value="0d85c739-aa6a-427d-8c4f-f4eabc1da2b4" />
+  </component>
+  <component name="JpaPluginProjectSettings">
+    <option name="lastSelectedLanguage" value="Kotlin" />
+  </component>
+</project>
