@@ -28,6 +28,6 @@ class ServAuth(
 
     override fun handleAuthReq(req: AuthReq): AuthRes =
         (req.data == tokenHash)
-            .also { log.info("Hash challenged: ${req.data}; result: $this") }
+            .also { log.info("Hash challenged: ${req.data}; result: $it") }
             .run { AuthRes(this) }
 }

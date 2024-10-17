@@ -30,7 +30,7 @@ const handleStore = async () => {
   } else {
     loading.value = true;
     try {
-      const dt = (await apiPut("/api/save", query)).data;
+      const dt = (await apiPost("/api/update", query)).data;
       if (dt === 0) {
         result.sign = "存储成功";
         await MessagePlugin.success("存储成功");
@@ -55,7 +55,7 @@ const handleSelect = async () => {
       query.id = 0;
       await MessagePlugin.error("ID不能小于0");
     } else {
-      const r = (await apiPost("/api/save", query)).data;
+      const r = (await apiPost("/api/save/query", query)).data;
       const { id, text, note } = r;
       if (id < 0) {
         result.sign = "读取失败";

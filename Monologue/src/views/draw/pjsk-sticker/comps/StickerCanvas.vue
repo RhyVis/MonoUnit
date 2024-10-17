@@ -87,7 +87,7 @@ onMounted(() => {
 
 <template>
   <div id="sticker-container">
-    <t-loading :loading="loading" size="small" delay="50">
+    <t-loading :loading="loading" size="small" :delay="50">
       <canvas id="sticker-canvas" ref="canvasRef" />
     </t-loading>
   </div>

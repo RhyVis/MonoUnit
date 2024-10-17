@@ -1,7 +1,10 @@
 import instance from "@/lib/util/apiHttp";
 import type { ApiResponse, CompileTime } from "@/lib/type/typeApi";
 
-class PostObject {
+/**
+ * Standard Request Object
+ */
+class Req {
   private code: number;
   private meta: string;
   private data: any;
@@ -27,7 +30,7 @@ async function apiGet(url: string, params?: any): Promise<ApiResponse> {
  * @param data
  */
 async function apiPost(url: string, data?: any): Promise<ApiResponse> {
-  return (await instance.post(url, new PostObject(data))).data as ApiResponse;
+  return (await instance.post(url, new Req(data))).data as ApiResponse;
 }
 
 /**
@@ -36,7 +39,7 @@ async function apiPost(url: string, data?: any): Promise<ApiResponse> {
  * @param data
  */
 async function apiPut(url: string, data?: any): Promise<ApiResponse> {
-  return (await instance.put(url, data)).data as ApiResponse;
+  return (await instance.put(url, new Req(data))).data as ApiResponse;
 }
 
 /**
