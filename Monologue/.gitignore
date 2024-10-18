@@ -30,6 +30,7 @@ coverage
 *.tsbuildinfo
 
 # Custom
-.env*
+.env.development
+.env.production
 /src/assets/local/
 /public/version*

@@ -40,7 +40,7 @@ const result = ref("");
 </script>
 
 <template>
-  <ContentLayout title="倒叙者" subtitle="哈哈胖宝宝宝宝胖哈哈">
+  <ContentLayout title="倒叙者" subtitle="别急有反转">
     <t-form>
       <t-form-item label="原始文本">
         <t-textarea v-model="query.text" placeholder="空白是你的谎言" />

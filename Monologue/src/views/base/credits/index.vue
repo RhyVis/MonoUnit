@@ -1,11 +1,12 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
+import CLinkPri from "@/views/base/credits/comps/CLinkPri.vue";
+import CLinkN from "@/views/base/credits/comps/CLinkN.vue";
 import { useGlobalStore } from "@/store/global";
 import { ref } from "vue";
 import { HomeIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";
 
-const linkIcon = () => <t-icon name="jump" />;
 const global = useGlobalStore();
 const counter = ref(0);
 const counterIncrement = () => {
@@ -33,12 +34,12 @@ const counterIncrement = () => {
       <ul>
         <li>
           Vue.js - Powered by Vue.js for building user interfaces (
-          <t-link theme="primary" href="https://mit-license.org/" :suffix-icon="linkIcon">MIT License</t-link>
+          <c-link-pri href="https://mit-license.org">MIT License</c-link-pri>
           )
         </li>
         <li>
           TDesign - Design component library from TDesign (
-          <t-link theme="primary" href="https://mit-license.org/" :suffix-icon="linkIcon">MIT License</t-link>
+          <c-link-pri href="https://mit-license.org">MIT License</c-link-pri>
           )
         </li>
         <li>Cloudflare - Free static resource cache</li>
@@ -49,16 +50,12 @@ const counterIncrement = () => {
       <ul>
         <li>
           Kotlin - Programming language by JetBrains (
-          <t-link theme="primary" href="https://www.apache.org/licenses/LICENSE-2.0" :suffix-icon="linkIcon">
-            Apache 2.0
-          </t-link>
+          <c-link-pri href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</c-link-pri>
           )
         </li>
         <li>
           Spring Boot - Web service framework (
-          <t-link theme="primary" href="https://www.apache.org/licenses/LICENSE-2.0" :suffix-icon="linkIcon">
-            Apache 2.0
-          </t-link>
+          <c-link-pri href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</c-link-pri>
           )
         </li>
       </ul>
@@ -79,25 +76,43 @@ const counterIncrement = () => {
     <t-paragraph>
       <t-text>
         Most of the project code is licensed under the
-        <t-link theme="primary" href="https://www.gnu.org/licenses/gpl-3.0.txt" :suffix-icon="linkIcon">
-          GPL 3.0 Licence
-        </t-link>
+        <c-link-pri href="https://www.gnu.org/licenses/gpl-3.0.txt">GPL 3.0 Licence</c-link-pri>
         , but with some contents which need clarification:
       </t-text>
     </t-paragraph>
     <t-paragraph>
       <ul>
         <li>
-          All fonts, used or provided by the pages, are licensed under the
-          <t-link theme="primary" href="https://scripts.sil.org/OFL" :suffix-icon="linkIcon">
-            SIL Open Font 1.1 Licence
-          </t-link>
+          Some fonts, used or provided by the pages, are licensed under the
+          <c-link-pri href="https://scripts.sil.org/OFL">SIL Open Font 1.1 Licence</c-link-pri>
+          :
+          <ul>
+            <li>
+              <c-link-n href="https://fonts.google.com/specimen/Lilita+One/license">LilitaOne</c-link-n>
+            </li>
+            <li>
+              <c-link-n href="https://github.com/Des-Magmeta/ChildFunSans-Fusion">ChildFunSansFusion-Z</c-link-n>
+            </li>
+            <li>
+              <c-link-n href="https://github.com/welai/glow-sans">GlowSansSC</c-link-n>
+            </li>
+          </ul>
+          Other fonts have commercial restrictions, or unclear licence, which is only for personal non-commercial usage:
+          <ul>
+            <li>
+              <c-link-n href="https://lets.fontworks.co.jp/fonts/218">YurukaStd</c-link-n>
+            </li>
+            <li>
+              <c-link-n href="https://www.ssfonts.com/shows/27/43.html">SSFangTangTi</c-link-n>
+            </li>
+            <li>
+              <c-link-n href="https://www.typebank.co.jp">RoGSanSrfStd</c-link-n>
+            </li>
+          </ul>
         </li>
         <li>
           Other assets, such as images and other media, are licensed under the
-          <t-link theme="primary" href="https://creativecommons.org/licenses/by-sa/4.0/" :suffix-icon="linkIcon">
-            CC BY-SA 4.0 Licence
-          </t-link>
+          <c-link-pri href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 Licence</c-link-pri>
         </li>
       </ul>
     </t-paragraph>

@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import { ref } from "vue";
 import { useAuthStore } from "@/store/comps/auth";

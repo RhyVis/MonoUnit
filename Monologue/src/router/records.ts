@@ -6,14 +6,14 @@ type RouterRecordMeta = {
   auth?: boolean;
 };
 type RouterRecordAssemble = RouteRecordRaw & {
-  meta: RouterRecordMeta;
+  meta?: RouterRecordMeta;
 };
 
 const baseRecords: RouterRecordAssemble[] = [
   {
     path: "/credits",
     name: "Credits",
-    component: () => import("@/views/base/info-pages/CreditsView.vue"),
+    component: () => import("@/views/base/credits/index.vue"),
     meta: {
       title: "Credits",
     },
@@ -21,7 +21,7 @@ const baseRecords: RouterRecordAssemble[] = [
   {
     path: "/auth",
     name: "Auth",
-    component: () => import("@/views/base/info-pages/AuthView.vue"),
+    component: () => import("@/views/base/auth/index.vue"),
     meta: {
       title: "Auth",
     },

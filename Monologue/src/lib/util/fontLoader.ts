@@ -1,11 +1,19 @@
 const fontList = [
   {
+    name: "YurukaStd",
+    url: "/font/YurukaStd.woff2",
+  },
+  {
+    name: "SSFangTangTi",
+    url: "/font/ShangShouFangTangTi.woff2",
+  },
+  {
     name: "LilitaOne",
     url: "/font/LilitaOne-Regular.ttf",
   },
   {
-    name: "ChildFunSans",
-    url: "/font/ChildFunSans-Demo.ttf",
+    name: "ChildFunSansFusion-Z",
+    url: "/font/ChildFunSansFusion-Z.ttf",
   },
   {
     name: "RoGSanSrfStd-Bd",
@@ -15,16 +23,29 @@ const fontList = [
     name: "RoGSanSrfStd-Bd",
     url: "/font/RoGSanSrfStd-Bd_CJK.woff2",
   },
+  {
+    name: "RoGSanSrfStd-Bd",
+    url: "/font/RoGSanSrfStd-Bd-Original.woff2",
+  },
+  {
+    name: "GlowSans",
+    url: "/font/GlowSansSC-Normal-Heavy.otf",
+  },
 ];
 
 const base = import.meta.env.VITE_RES_ROOT;
 
 async function loadFonts() {
-  for (const item of fontList) {
-    const font = new FontFace(item.name, `url(${base + item.url})`);
-    const loaded = await font.load();
-    document.fonts.add(loaded);
-    console.log(`Successfully loaded ${item.name}`);
+  try {
+    for (const item of fontList) {
+      const font = new FontFace(item.name, `url(${base + item.url})`);
+      const loaded = await font.load();
+      document.fonts.add(loaded);
+      console.debug(`Successfully loaded ${item.name}`);
+    }
+    console.log("Successfully loaded all fonts");
+  } catch (e) {
+    throw e;
   }
 }
 

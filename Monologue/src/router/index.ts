@@ -20,7 +20,7 @@ const records: RouteRecordRaw[] = [
   {
     path: "/:pathMatch(.*)",
     name: "404",
-    component: () => import("@/views/base/info-pages/ErrorView.vue"),
+    component: () => import("@/views/base/error/index.vue"),
   },
 ];
 

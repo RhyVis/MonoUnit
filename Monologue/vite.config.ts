@@ -18,13 +18,10 @@ export default defineConfig({
     VitePWA({
       injectRegister: "auto",
       registerType: "autoUpdate",
-      devOptions: {
-        enabled: false,
-      },
       manifest: {
         name: "MonoUnit",
         short_name: "Mono",
-        description: "Simple Toolbox",
+        description: "Simple Web App for personal use",
         start_url: "./",
         display: "standalone",
         theme_color: "#ffffff",

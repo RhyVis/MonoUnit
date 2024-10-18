@@ -2,11 +2,12 @@
 import { computed, onMounted, reactive, ref } from "vue";
 import { MessagePlugin } from "tdesign-vue-next";
 import { CopyIcon, DownloadIcon } from "tdesign-icons-vue-next";
+import { b64ToBlob } from "@/lib/util/imageTransform";
+import { usePjskStore } from "@/store/comps/pjsk";
 import CharacterList from "@/assets/conf/characters.json";
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import StickerCanvas from "@/views/draw/pjsk-sticker/comps/StickerCanvas.vue";
 import SelectChara from "@/views/draw/pjsk-sticker/comps/SelectChara.vue";
-import { b64ToBlob } from "@/lib/util/imageTransform";
 import type { CharacterDefinition, DrawConf } from "@/lib/type/typeSticker";
 
 const subtitle = () => {
@@ -23,6 +24,8 @@ const subtitleLinkIcon = () => <t-icon name="jump" />;
 
 const charaList = CharacterList as CharacterDefinition[];
 
+const store = usePjskStore();
+
 const currentConf = reactive<DrawConf>({
   charaID: 0,
   fontSize: 1,
@@ -32,6 +35,7 @@ const currentConf = reactive<DrawConf>({
   y: 0,
   text: "",
   curve: false,
+  useCommercialFonts: false,
 });
 const currentConfYProxy = ref(360);
 
@@ -51,6 +55,8 @@ const updateCurrentConf = (id: number) => {
 };
 
 const proxyDraw = () => {
+  store.charaId = currentConf.charaID;
+  store.useCommercialFonts = currentConf.useCommercialFonts;
   stickerCanvasKey.value = new Date().getTime();
 };
 
@@ -92,7 +98,9 @@ const handleDownloadImage = async () => {
 };
 
 onMounted(() => {
-  updateCurrentConf(0);
+  currentConf.charaID = store.charaId;
+  currentConf.useCommercialFonts = store.useCommercialFonts;
+  updateCurrentConf(currentConf.charaID);
 });
 </script>
 
@@ -137,6 +145,9 @@ onMounted(() => {
       </t-form-item>
       <t-form-item label="曲度" help="非长字符串渲染时使用">
         <t-switch v-model="currentConf.curve" @change="proxyDraw" />
+      </t-form-item>
+      <t-form-item label="商业字体" help="商业字体仅供非商业用途使用">
+        <t-switch v-model="currentConf.useCommercialFonts" @change="proxyDraw" />
       </t-form-item>
     </t-form>
   </ContentLayout>

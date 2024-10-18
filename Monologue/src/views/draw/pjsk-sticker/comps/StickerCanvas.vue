@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { assembleSrc, charaList } from "@/views/draw/pjsk-sticker/scripts/sticker";
 import type { DrawConf } from "@/lib/type/typeSticker";
 
@@ -10,6 +10,9 @@ const loading = ref(false);
 
 const canvasRef = ref<HTMLCanvasElement>();
 const imageRef = ref(new Image());
+const fontFamily = computed(() =>
+  props.conf.useCommercialFonts ? "YurukaStd, SSFangTangTi" : "LilitaOne, ChildFunSansFusion-Z",
+);
 
 const draw = (conf: DrawConf) => {
   const { charaID, fontSize, spaceSize, rotate, x, y, text, curve } = conf;
@@ -45,7 +48,7 @@ const draw = (conf: DrawConf) => {
       img.width * aRatio,
       img.height * aRatio,
     );
-    ctx.font = `${fontSize}px LilitaOne, ChildFunSans`;
+    ctx.font = `${fontSize}px ${fontFamily.value}`;
     ctx.lineWidth = 9;
     ctx.save();
 

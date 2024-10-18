@@ -22,6 +22,7 @@ type DrawConf = {
   y: number;
   text: string;
   curve: boolean;
+  useCommercialFonts: boolean;
 };
 
 export type { CharacterDefinition, DrawConf };
