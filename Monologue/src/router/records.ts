@@ -6,7 +6,7 @@ type RouterRecordMeta = {
   auth?: boolean;
 };
 type RouterRecordAssemble = RouteRecordRaw & {
-  meta?: RouterRecordMeta;
+  meta: RouterRecordMeta;
 };
 
 const baseRecords: RouterRecordAssemble[] = [
