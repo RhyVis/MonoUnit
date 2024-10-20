@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import CLinkPri from "@/views/base/credits/comps/CLinkPri.vue";
-import CLinkN from "@/views/base/credits/comps/CLinkN.vue";
+import CLinkPri from "@/pages/base/credits/comps/CLinkPri.vue";
+import CLinkN from "@/pages/base/credits/comps/CLinkN.vue";
 import { useGlobalStore } from "@/store/global";
 import { ref } from "vue";
 import { HomeIcon } from "tdesign-icons-vue-next";

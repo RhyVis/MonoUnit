@@ -6,8 +6,8 @@ import { b64ToBlob } from "@/lib/util/imageTransform";
 import { usePjskStore } from "@/store/comps/pjsk";
 import CharacterList from "@/assets/conf/characters.json";
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import StickerCanvas from "@/views/draw/pjsk-sticker/comps/StickerCanvas.vue";
-import SelectChara from "@/views/draw/pjsk-sticker/comps/SelectChara.vue";
+import StickerCanvas from "@/pages/draw/pjsk-sticker/comps/StickerCanvas.vue";
+import SelectChara from "@/pages/draw/pjsk-sticker/comps/SelectChara.vue";
 import type { CharacterDefinition, DrawConf } from "@/lib/type/typeSticker";
 
 const subtitle = () => {
@@ -35,7 +35,7 @@ const currentConf = reactive<DrawConf>({
   y: 0,
   text: "",
   curve: false,
-  useCommercialFonts: false,
+  useCommercialFonts: true,
 });
 const currentConfYProxy = ref(360);
 

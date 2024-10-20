@@ -3,7 +3,7 @@ import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import AdvancedOptContainer from "@/components/menu/AdvancedOptContainer.vue";
 import { computed, reactive, ref } from "vue";
 import { ArrowRightCircleIcon, RefreshIcon } from "tdesign-icons-vue-next";
-import { radixVal } from "@/views/util/radix/scripts/radix";
+import { radixVal } from "@/pages/util/radix/scripts/radix";
 import { MessagePlugin } from "tdesign-vue-next";
 
 const defaultCharset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

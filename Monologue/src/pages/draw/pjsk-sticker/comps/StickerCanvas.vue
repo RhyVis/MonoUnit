@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from "vue";
-import { assembleSrc, charaList } from "@/views/draw/pjsk-sticker/scripts/sticker";
+import { assembleSrc, charaList } from "@/pages/draw/pjsk-sticker/scripts/sticker";
 import type { DrawConf } from "@/lib/type/typeSticker";
 
 const props = defineProps<{

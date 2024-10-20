@@ -4,7 +4,7 @@ import { useAuthStore } from "@/store/comps/auth";
 import { validateToken } from "@/lib/util/authFunction";
 import { baseRecords, dataRecords, drawRecords, mystRecords, utilRecords } from "@/router/records";
 import { MessagePlugin } from "tdesign-vue-next";
-import HomeView from "@/views/base/HomeView.vue";
+import HomeView from "@/pages/base/HomeView.vue";
 
 const records: RouteRecordRaw[] = [
   {
@@ -20,7 +20,7 @@ const records: RouteRecordRaw[] = [
   {
     path: "/:pathMatch(.*)",
     name: "404",
-    component: () => import("@/views/base/error/index.vue"),
+    component: () => import("@/pages/base/error/index.vue"),
   },
 ];
 

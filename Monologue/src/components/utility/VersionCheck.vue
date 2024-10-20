@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from "vue";
 import { getVersion } from "@/lib/util/apiMethods";
 import { MessagePlugin } from "tdesign-vue-next";
 import { ArrowLeftIcon, RefreshIcon } from "tdesign-icons-vue-next";
-import { decimalRadixVal } from "@/views/util/radix/scripts/radix";
+import { decimalRadixVal } from "@/pages/util/radix/scripts/radix";
 import VersionView from "@/assets/local/version.json";
 
 const loading = ref(true);

@@ -28,22 +28,10 @@ class ServTarot(
     private val deckInfo = mutableMapOf<String, TarotDeckInfo>()
 
     override fun afterPropertiesSet() {
-        val mainConfUri =
-            UriComponentsBuilder
-                .fromHttpUrl(conf.endpoint)
-                .pathSegment("tarot", "conf", "_conf.json")
-                .encode()
-                .build()
-                .toUriString()
+        val mainConfUri = buildUrl(conf.endpoint, "tarot", "conf", "_conf.json")
         val mainConf = Json.decodeFromString<ConfMapping>(HttpUtil.get(mainConfUri))
         for (mapping in mainConf.mappings) {
-            val deckFileUri =
-                UriComponentsBuilder
-                    .fromHttpUrl(conf.endpoint)
-                    .pathSegment("tarot", "conf", mapping.value)
-                    .encode()
-                    .build()
-                    .toUriString()
+            val deckFileUri = buildUrl(conf.endpoint, "tarot", "conf", mapping.value)
             val deck = Json.decodeFromString<TarotDeck>(HttpUtil.get(deckFileUri))
             decks[mapping.key] = deck
             deckInfo[mapping.key] = deck.buildInfo()
@@ -87,7 +75,7 @@ class ServTarot(
         if (!deckMainOnly.containsKey(deck)) {
             emptyList()
         } else {
-            if (deckMainOnly[deck]!!) {
+            if (deckMainOnly[deck] == true) {
                 drawShuffled(deck, size)
             } else {
                 if (full) {
@@ -104,17 +92,21 @@ class ServTarot(
     ): List<TarotCardDrawn> {
         val deckEntity = decks[deck] ?: return emptyList()
         val deckPicked = deckEntity.deck.shuffled().take(count)
-        val deckImgPrefix =
-            UriComponentsBuilder
-                .fromHttpUrl(conf.endpoint)
-                .pathSegment("tarot", "img")
-                .encode()
-                .build()
-                .toUriString()
+        val deckImgPrefix = buildUrl(conf.endpoint, "tarot", "img")
         return if (deckEntity.hasR) {
             deckPicked.map { it.buildDrawn(deckImgPrefix, Random.nextBoolean()) }
         } else {
             deckPicked.map { it.buildDrawn(deckImgPrefix) }
         }
     }
+
+    private fun buildUrl(
+        endpoint: String,
+        vararg paths: String,
+    ) = UriComponentsBuilder
+        .fromHttpUrl(endpoint)
+        .pathSegment(*paths)
+        .encode()
+        .build()
+        .toUriString()
 }

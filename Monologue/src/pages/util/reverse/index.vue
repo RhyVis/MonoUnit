@@ -2,7 +2,7 @@
 import { reactive, ref } from "vue";
 import { RefreshIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";
-import { reverseModes } from "@/views/util/reverse/scripts/reverse";
+import { reverseModes } from "@/pages/util/reverse/scripts/reverse";
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import ButtonCopy from "@/components/btn/ButtonCopy.vue";
 import ButtonRead from "@/components/btn/ButtonRead.vue";

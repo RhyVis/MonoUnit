@@ -1,6 +1,6 @@
 <script lang="tsx" setup>
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import BannerCanvas from "@/views/draw/ba-banner/comps/BannerCanvas.vue";
+import BannerCanvas from "@/pages/draw/ba-banner/comps/BannerCanvas.vue";
 import { ref } from "vue";
 import { CopyIcon, DownloadIcon, RefreshIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";

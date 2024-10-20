@@ -13,7 +13,7 @@ const baseRecords: RouterRecordAssemble[] = [
   {
     path: "/credits",
     name: "Credits",
-    component: () => import("@/views/base/credits/index.vue"),
+    component: () => import("@/pages/base/credits/index.vue"),
     meta: {
       title: "Credits",
     },
@@ -21,7 +21,7 @@ const baseRecords: RouterRecordAssemble[] = [
   {
     path: "/auth",
     name: "Auth",
-    component: () => import("@/views/base/auth/index.vue"),
+    component: () => import("@/pages/base/auth/index.vue"),
     meta: {
       title: "Auth",
     },
@@ -32,7 +32,7 @@ const dataRecords: RouterRecordAssemble[] = [
   {
     path: "/spam",
     name: "Spam",
-    component: () => import("@/views/data/spam/index.vue"),
+    component: () => import("@/pages/data/spam/index.vue"),
     meta: {
       title: "弹药库",
       icon: "loudspeaker",
@@ -41,7 +41,7 @@ const dataRecords: RouterRecordAssemble[] = [
   {
     path: "/save",
     name: "Save",
-    component: () => import("@/views/data/save/index.vue"),
+    component: () => import("@/pages/data/save/index.vue"),
     meta: {
       title: "字符存储",
       icon: "save",
@@ -51,7 +51,7 @@ const dataRecords: RouterRecordAssemble[] = [
   {
     path: "/nav",
     name: "Nav",
-    component: () => import("@/views/data/nav/index.vue"),
+    component: () => import("@/pages/data/nav/index.vue"),
     meta: {
       title: "导航",
       icon: "indicator",
@@ -64,7 +64,7 @@ const mystRecords: RouterRecordAssemble[] = [
   {
     path: "/tarot",
     name: "Tarot",
-    component: () => import("@/views/myst/tarot/index.vue"),
+    component: () => import("@/pages/myst/tarot/index.vue"),
     meta: {
       title: "电子塔罗",
       icon: "card",
@@ -76,7 +76,7 @@ const drawRecords: RouterRecordAssemble[] = [
   {
     path: "/pjsk-sticker",
     name: "PJSK-Sticker",
-    component: () => import("@/views/draw/pjsk-sticker/index.vue"),
+    component: () => import("@/pages/draw/pjsk-sticker/index.vue"),
     meta: {
       title: "PJSK表情",
       icon: "edit-2",
@@ -85,7 +85,7 @@ const drawRecords: RouterRecordAssemble[] = [
   {
     path: "/ba-banner",
     name: "BA-Banner",
-    component: () => import("@/views/draw/ba-banner/index.vue"),
+    component: () => import("@/pages/draw/ba-banner/index.vue"),
     meta: {
       title: "BA横幅",
       icon: "typography",
@@ -97,7 +97,7 @@ const utilRecords: RouterRecordAssemble[] = [
   {
     path: "/codex",
     name: "Codex",
-    component: () => import("@/views/util/codex/index.vue"),
+    component: () => import("@/pages/util/codex/index.vue"),
     meta: {
       title: "抽象转义",
       icon: "chat-error",
@@ -106,7 +106,7 @@ const utilRecords: RouterRecordAssemble[] = [
   {
     path: "/reverse",
     name: "Reverse",
-    component: () => import("@/views/util/reverse/index.vue"),
+    component: () => import("@/pages/util/reverse/index.vue"),
     meta: {
       title: "反转机",
       icon: "refresh",
@@ -115,7 +115,7 @@ const utilRecords: RouterRecordAssemble[] = [
   {
     path: "/base64",
     name: "Base64",
-    component: () => import("@/views/util/base64/index.vue"),
+    component: () => import("@/pages/util/base64/index.vue"),
     meta: {
       title: "Base64",
       icon: "file-code-1",
@@ -124,7 +124,7 @@ const utilRecords: RouterRecordAssemble[] = [
   {
     path: "/radix",
     name: "Radix",
-    component: () => import("@/views/util/radix/index.vue"),
+    component: () => import("@/pages/util/radix/index.vue"),
     meta: {
       title: "进制转换",
       icon: "calculation-1",
