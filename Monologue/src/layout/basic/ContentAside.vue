@@ -59,7 +59,7 @@ onMounted(() => {
         <template #title>
           <span>Data</span>
         </template>
-        <div v-for="item in dataRecords">
+        <div v-for="item in dataRecords" :key="item.name">
           <t-menu-item v-if="!(item.meta.auth && !auth.valid)" :to="item.path" :value="item.name" @click="handleClose">
             <template #icon>
               <icon v-if="item.meta.icon" :name="item.meta.icon" />
@@ -77,7 +77,7 @@ onMounted(() => {
         <template #title>
           <span>Myst</span>
         </template>
-        <div v-for="item in mystRecords">
+        <div v-for="item in mystRecords" :key="item.name">
           <t-menu-item v-if="!(item.meta.auth && !auth.valid)" :to="item.path" :value="item.name" @click="handleClose">
             <template #icon>
               <icon v-if="item.meta.icon" :name="item.meta.icon" />
@@ -95,7 +95,7 @@ onMounted(() => {
         <template #title>
           <span>Draw</span>
         </template>
-        <div v-for="item in drawRecords">
+        <div v-for="item in drawRecords" :key="item.name">
           <t-menu-item v-if="!(item.meta.auth && !auth.valid)" :to="item.path" :value="item.name" @click="handleClose">
             <template #icon>
               <icon v-if="item.meta.icon" :name="item.meta.icon" />
@@ -113,7 +113,7 @@ onMounted(() => {
         <template #title>
           <span>Util</span>
         </template>
-        <div v-for="item in utilRecords">
+        <div v-for="item in utilRecords" :key="item.name">
           <t-menu-item v-if="!(item.meta.auth && !auth.valid)" :to="item.path" :value="item.name" @click="handleClose">
             <template #icon>
               <icon v-if="item.meta.icon" :name="item.meta.icon" />

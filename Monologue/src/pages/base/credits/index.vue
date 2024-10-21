@@ -13,7 +13,7 @@ const counterIncrement = () => {
   if (!global.authShow) {
     if (counter.value > 5) {
       global.authShow = true;
-      MessagePlugin.info("Something went wrong");
+      MessagePlugin.info("Something went wrong...");
     }
     counter.value++;
   }

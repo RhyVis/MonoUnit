@@ -18,10 +18,10 @@ class Req {
 /**
  * Get Method
  * @param url
- * @param params
+ * @param config
  */
-async function apiGet(url: string, params?: object): Promise<ApiResponse> {
-  return (await instance.get(url, params)).data as ApiResponse;
+async function apiGet(url: string, config?: never): Promise<ApiResponse> {
+  return (await instance.get(url, config)).data as ApiResponse;
 }
 
 /**

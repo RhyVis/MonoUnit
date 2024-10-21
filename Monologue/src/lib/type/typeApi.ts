@@ -1,6 +1,6 @@
 type ApiResponse = {
   code: number;
-  data: any;
+  data: unknown;
 };
 
 type CompileTime = {

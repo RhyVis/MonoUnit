@@ -37,11 +37,11 @@ const base = import.meta.env.VITE_RES_ROOT;
 
 async function loadFonts() {
   try {
-    for (const item of fontList) {
-      const font = new FontFace(item.name, `url(${base + item.url})`);
-      const loaded = await font.load();
+    for (const font of fontList) {
+      const fontFace = new FontFace(font.name, `url(${base + font.url})`);
+      const loaded = await fontFace.load();
       document.fonts.add(loaded);
-      console.debug(`Successfully loaded ${item.name}`);
+      console.debug(`Successfully loaded ${font.name}`);
     }
     console.log("Successfully loaded all fonts");
   } catch (e) {

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { RouterView } from "vue-router";
 import BaseLayout from "@/layout/frame/BaseLayout.vue";
 import ContentHeader from "@/layout/basic/ContentHeader.vue";
 import ContentFooter from "@/layout/basic/ContentFooter.vue";
 import ContentAside from "@/layout/basic/ContentAside.vue";
+import { onMounted } from "vue";
+import { RouterView } from "vue-router";
 import { loadFonts } from "@/lib/util/fontLoader";
 import { useGlobalStore } from "@/store/global";
 import { MessagePlugin } from "tdesign-vue-next";
-import { onMounted } from "vue";
 
 const global = useGlobalStore();
 
@@ -38,7 +38,7 @@ window.onload = () => {
 
 window.onresize = () => {
   if (document.body.style.zoom != "1") {
-    console.log(`Unexpected resize: ${document.body.style.zoom}`);
+    console.debug(`Unexpected resize: ${document.body.style.zoom}`);
     document.body.style.zoom = "1.0";
   }
 };
@@ -48,8 +48,8 @@ onMounted(() => {
     if (!global.fontLoaded) {
       loadFonts().then(() => (global.fontLoaded = true));
     }
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.error(e);
     MessagePlugin.error("字体加载失败");
   }
 });

@@ -7,6 +7,7 @@ import { reactive, ref } from "vue";
 import { MessagePlugin } from "tdesign-vue-next";
 import { apiPost } from "@/lib/util/apiMethods";
 import { DownloadIcon, UploadIcon } from "tdesign-icons-vue-next";
+import type { SaveEntry } from "@/pages/data/save/scripts/entryType";
 
 const query = reactive({
   id: 0,
@@ -55,7 +56,7 @@ const handleSelect = async () => {
       query.id = 0;
       await MessagePlugin.error("ID不能小于0");
     } else {
-      const r = (await apiPost("/api/save/query", query)).data;
+      const r = (await apiPost("/api/save/query", query)).data as SaveEntry;
       const { id, text, note } = r;
       if (id < 0) {
         result.sign = "读取失败";

@@ -3,13 +3,7 @@ import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import { ref } from "vue";
 import { MessagePlugin, type TableProps } from "tdesign-vue-next";
 import { apiGet } from "@/lib/util/apiMethods";
-
-type NavData = {
-  id: number;
-  data: string;
-  label: string;
-  note: string;
-};
+import type { NavData } from "@/pages/data/nav/scripts/navType"
 
 const columns = ref<TableProps["columns"]>([
   { colKey: "id", title: "ID", width: 40, align: "center" },
@@ -42,7 +36,7 @@ const result = ref<NavData[]>([]);
 try {
   apiGet("/api/nav")
     .then(res => {
-      result.value = res.data;
+      result.value = res.data as NavData[];
     })
     .then(() => {
       loading.value = false;
@@ -60,8 +54,8 @@ try {
       :bordered="true"
       :columns="columns"
       :data="result"
-      :hover="true"
       :loading="loading"
+      :hover="true"
       :stripe="true"
       row-key="id"
       size="small"
