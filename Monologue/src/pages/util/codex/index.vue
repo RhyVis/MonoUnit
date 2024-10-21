@@ -28,6 +28,7 @@ const handleSpam = async () => {
       });
       result.value = r.data;
     } catch (e) {
+      console.error(e);
       await MessagePlugin.error("与服务器通信失败");
     } finally {
       loading.value = false;

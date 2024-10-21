@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type Option = {
+type SimpSelOpt = {
   label?: string;
   value?: string;
 };
@@ -9,7 +9,7 @@ const selected = defineModel("selected", { required: true });
 const emit = defineEmits(["update"]);
 
 defineProps<{
-  options: Option[];
+  options: SimpSelOpt[];
   placeholder?: string;
   loading?: boolean;
   autoWidth?: boolean;

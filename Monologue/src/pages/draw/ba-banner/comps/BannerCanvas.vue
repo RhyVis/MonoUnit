@@ -9,15 +9,10 @@ const {
   textBaseLine = 0.68,
   horizontalTilt = -0.4,
   paddingX = 10,
-  graphOffset = { X: -15, Y: 0 },
+  graphOffsetX = -15,
+  graphOffsetY = 0,
   textLeft = "Blue",
   textRight = "Archive",
-  hollowPath = [
-    [284, 136],
-    [321, 153],
-    [159, 410],
-    [148, 403],
-  ],
   transparentBackground = false,
 } = defineProps<{
   canvasWidth?: number;
@@ -26,10 +21,10 @@ const {
   textBaseLine?: number;
   horizontalTilt?: number;
   paddingX?: number;
-  graphOffset?: { X: number; Y: number };
+  graphOffsetX?: number;
+  graphOffsetY?: number;
   textLeft?: string;
   textRight?: string;
-  hollowPath?: number[][];
   transparentBackground?: boolean;
 }>();
 const fontVal = computed(
@@ -45,6 +40,13 @@ const canvasWidthL = ref(0);
 const canvasWidthR = ref(0);
 const loading = ref(true);
 const canvasRef = ref<HTMLCanvasElement>();
+
+const hollowPath = [
+  [284, 136],
+  [321, 153],
+  [159, 410],
+  [148, 403],
+];
 
 canvasWidthL.value = canvasWidth / 2;
 canvasWidthR.value = canvasWidth / 2;
@@ -82,8 +84,8 @@ const doDraw = async () => {
   const baseImages = await loadAllBaseImg();
   ctx.drawImage(
     baseImages.halo,
-    canvasWidthL.value - canvasRef.value.height / 2 + graphOffset.X,
-    graphOffset.Y,
+    canvasWidthL.value - canvasRef.value.height / 2 + graphOffsetX,
+    graphOffsetY,
     canvasHeight,
     canvasHeight,
   );
@@ -101,8 +103,8 @@ const doDraw = async () => {
   ctx.resetTransform();
 
   const graph = {
-    X: canvasWidthL.value - canvasRef.value.height / 2 + graphOffset.X,
-    Y: graphOffset.Y,
+    X: canvasWidthL.value - canvasRef.value.height / 2 + graphOffsetX,
+    Y: graphOffsetY,
   };
 
   ctx.beginPath();
@@ -119,8 +121,8 @@ const doDraw = async () => {
   ctx.globalCompositeOperation = "source-over";
   ctx.drawImage(
     baseImages.cross,
-    canvasWidthL.value - canvasRef.value.height / 2 + graphOffset.X,
-    graphOffset.Y,
+    canvasWidthL.value - canvasRef.value.height / 2 + graphOffsetX,
+    graphOffsetY,
     canvasHeight,
     canvasHeight,
   );

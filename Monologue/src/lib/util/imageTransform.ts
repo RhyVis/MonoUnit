@@ -1,15 +1,21 @@
-const b64ToBlob = (b64Data: any, contentType?: any, sliceSize?: any) => {
+/**
+ * Transform b64 data to blob
+ * @param b64Data b64 string
+ * @param contentType data type to covert to
+ * @param sliceSize slice data size
+ */
+const b64ToBlob = (b64Data: string, contentType?: string, sliceSize?: number) => {
   contentType = contentType || "image/png";
   sliceSize = sliceSize || 512;
-  let byteCharacters = atob(b64Data);
-  let byteArrays = [];
+  const byteCharacters = atob(b64Data);
+  const byteArrays = [];
   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    let slice = byteCharacters.slice(offset, offset + sliceSize);
-    let byteNumbers = new Array(slice.length);
+    const slice = byteCharacters.slice(offset, offset + sliceSize);
+    const byteNumbers = new Array(slice.length);
     for (let i = 0; i < slice.length; i++) {
       byteNumbers[i] = slice.charCodeAt(i);
     }
-    let byteArray = new Uint8Array(byteNumbers);
+    const byteArray = new Uint8Array(byteNumbers);
     byteArrays.push(byteArray);
   }
   return new Blob(byteArrays, { type: contentType });

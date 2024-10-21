@@ -1,6 +1,5 @@
 <script lang="tsx" setup>
 import { computed, onMounted, reactive, ref } from "vue";
-import { MessagePlugin } from "tdesign-vue-next";
 import { CopyIcon, DownloadIcon } from "tdesign-icons-vue-next";
 import { b64ToBlob } from "@/lib/util/imageTransform";
 import { usePjskStore } from "@/store/comps/pjsk";
@@ -9,6 +8,7 @@ import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import StickerCanvas from "@/pages/draw/pjsk-sticker/comps/StickerCanvas.vue";
 import SelectChara from "@/pages/draw/pjsk-sticker/comps/SelectChara.vue";
 import type { CharacterDefinition, DrawConf } from "@/lib/type/typeSticker";
+import { copyImage, downloadImage } from "@/lib/util/imageUtil";
 
 const subtitle = () => {
   return (
@@ -70,31 +70,12 @@ const handleYProxy = () => {
   proxyDraw();
 };
 const handleCopyImage = async () => {
-  try {
-    const canvas = document.getElementById("sticker-canvas") as HTMLCanvasElement;
-    await navigator.clipboard.write([
-      new ClipboardItem({
-        "image/png": b64ToBlob(canvas?.toDataURL().split(",")[1]),
-      }),
-    ]);
-    await MessagePlugin.success("复制图像成功");
-  } catch (e) {
-    console.error(e);
-    await MessagePlugin.error("复制图像失败");
-  }
+  const canvas = document.getElementById("sticker-canvas") as HTMLCanvasElement;
+  await copyImage(b64ToBlob(canvas?.toDataURL().split(",")[1]));
 };
 const handleDownloadImage = async () => {
-  try {
-    const canvas = document.getElementById("sticker-canvas") as HTMLCanvasElement;
-    const link = document.createElement("a");
-    link.download = `${charaList[currentConf.charaID].name}_sticker.png`;
-    link.href = canvas.toDataURL();
-    link.click();
-    await MessagePlugin.success("下载图像成功");
-  } catch (e) {
-    console.error(e);
-    await MessagePlugin.error("下载图像失败");
-  }
+  const canvas = document.getElementById("sticker-canvas") as HTMLCanvasElement;
+  await downloadImage(canvas.toDataURL(), `${charaList[currentConf.charaID].name}_sticker.png`);
 };
 
 onMounted(() => {

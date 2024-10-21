@@ -5,10 +5,10 @@ import type { ApiResponse, CompileTime } from "@/lib/type/typeApi";
  * Standard Request Object
  */
 class Req {
-  private code: number;
-  private meta: string;
-  private data: any;
-  constructor(data: any) {
+  code: number;
+  meta: string;
+  data: string | object;
+  constructor(data: string | object) {
     this.code = 0;
     this.meta = "";
     this.data = data;
@@ -20,7 +20,7 @@ class Req {
  * @param url
  * @param params
  */
-async function apiGet(url: string, params?: any): Promise<ApiResponse> {
+async function apiGet(url: string, params?: object): Promise<ApiResponse> {
   return (await instance.get(url, params)).data as ApiResponse;
 }
 
@@ -29,7 +29,7 @@ async function apiGet(url: string, params?: any): Promise<ApiResponse> {
  * @param url
  * @param data
  */
-async function apiPost(url: string, data?: any): Promise<ApiResponse> {
+async function apiPost(url: string, data: string | object): Promise<ApiResponse> {
   return (await instance.post(url, new Req(data))).data as ApiResponse;
 }
 
@@ -38,7 +38,7 @@ async function apiPost(url: string, data?: any): Promise<ApiResponse> {
  * @param url
  * @param data
  */
-async function apiPut(url: string, data?: any): Promise<ApiResponse> {
+async function apiPut(url: string, data: string | object): Promise<ApiResponse> {
   return (await instance.put(url, new Req(data))).data as ApiResponse;
 }
 

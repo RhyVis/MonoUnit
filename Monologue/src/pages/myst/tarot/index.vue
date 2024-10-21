@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, onMounted, reactive, type Ref, ref } from "vue";
-import type { Card, CardDisplay, DeckInfo, DeckInfoInterface } from "@/lib/type/typeTarot";
+import type { Card, CardDisplay, DeckInfo, DeckInfoInterface, DeckInfoSelect } from "@/lib/type/typeTarot";
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import SelectSimple from "@/components/select/SelectSimple.vue";
 import TarotMain from "@/pages/myst/tarot/comps/TarotMain.vue";
@@ -23,9 +23,9 @@ const conf = reactive({
 });
 const loading = ref(false);
 
-let deckInfoMap: Ref<DeckInfoInterface> = ref({});
-let deckInfoList: Ref<DeckInfo[]> = ref([]);
-let deckInfoSelect: Ref<any[]> = ref([]);
+const deckInfoMap: Ref<DeckInfoInterface> = ref({});
+const deckInfoList: Ref<DeckInfo[]> = ref([]);
+const deckInfoSelect: Ref<DeckInfoSelect[]> = ref([]);
 const selectLoading = ref(true);
 
 apiGet("/api/tarot/info")

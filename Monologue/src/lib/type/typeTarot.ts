@@ -27,4 +27,9 @@ interface DeckInfoInterface {
   [name: string]: DeckInfo;
 }
 
-export type { Card, CardDisplay, DeckInfo, DeckInfoInterface };
+type DeckInfoSelect = {
+  label: string;
+  value: string;
+};
+
+export type { Card, CardDisplay, DeckInfo, DeckInfoSelect, DeckInfoInterface };

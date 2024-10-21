@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import BannerCanvas from "@/pages/draw/ba-banner/comps/BannerCanvas.vue";
+import AdvancedOptContainer from "@/components/menu/AdvancedOptContainer.vue";
 import { ref } from "vue";
 import { CopyIcon, DownloadIcon, RefreshIcon } from "tdesign-icons-vue-next";
-import { MessagePlugin } from "tdesign-vue-next";
-import AdvancedOptContainer from "@/components/menu/AdvancedOptContainer.vue";
+import { copyImage, downloadImage } from "@/lib/util/imageUtil";
 
 const subtitle = () => {
   return (
@@ -31,31 +31,12 @@ const handleUpdate = () => {
   canvasKey.value = new Date().getTime();
 };
 const handleCopyImage = async () => {
-  try {
-    const blob = await bannerCanvasRef.value.generateOutputImage();
-    await navigator.clipboard.write([
-      new ClipboardItem({
-        "image/png": blob,
-      }),
-    ]);
-    await MessagePlugin.success("复制图像成功");
-  } catch (e) {
-    console.error(e);
-    await MessagePlugin.error("复制图像失败");
-  }
+  const blob = await bannerCanvasRef.value.generateOutputImage();
+  await copyImage(blob);
 };
 const handleDownloadImage = async () => {
-  try {
-    const blob = await bannerCanvasRef.value.generateOutputImage();
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = `${textL.value + textR.value}-ba-banner.png`;
-    a.click();
-    await MessagePlugin.success("下载图像成功");
-  } catch (e) {
-    console.error(e);
-    await MessagePlugin.error("下载图像失败");
-  }
+  const blob = await bannerCanvasRef.value.generateOutputImage();
+  await downloadImage(blob, `${textL.value + textR.value}-ba-banner.png`);
 };
 </script>
 
@@ -65,7 +46,8 @@ const handleDownloadImage = async () => {
       <div>
         <BannerCanvas
           :key="canvasKey"
-          :graph-offset="{ X: offsetX, Y: offsetY }"
+          :graph-offset-x="offsetX"
+          :graph-offset-y="offsetY"
           :text-left="textL"
           :text-right="textR"
           :transparent-background="tBg"

@@ -15,12 +15,14 @@ const revText = computed(() => (rev.value ? "(逆位)" : "(正位)"));
 const revDesc = computed(() => (rev.value ? props.card.data.desc.reverse : props.card.data.desc.upright));
 
 const handleImage = () => {
+  // eslint-disable-next-line vue/no-mutating-props
   props.card.showImg = !props.card.showImg;
 };
 const handleImageErr = (name: string) => {
   MessagePlugin.error(`加载图片失败: ${name}`);
 };
 const handleDesc = () => {
+  // eslint-disable-next-line vue/no-mutating-props
   props.card.showDesc = !props.card.showDesc;
 };
 </script>

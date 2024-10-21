@@ -5,7 +5,7 @@ import ButtonClear from "@/components/btn/ButtonClear.vue";
 import ButtonRead from "@/components/btn/ButtonRead.vue";
 import { reactive, ref } from "vue";
 import { MessagePlugin } from "tdesign-vue-next";
-import { apiPost, apiPut } from "@/lib/util/apiMethods";
+import { apiPost } from "@/lib/util/apiMethods";
 import { DownloadIcon, UploadIcon } from "tdesign-icons-vue-next";
 
 const query = reactive({

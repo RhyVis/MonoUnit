@@ -11,7 +11,9 @@ const loading = ref(false);
 const canvasRef = ref<HTMLCanvasElement>();
 const imageRef = ref(new Image());
 const fontFamily = computed(() =>
-  props.conf.useCommercialFonts ? "YurukaStd, SSFangTangTi" : "LilitaOne, ChildFunSansFusion-Z",
+  props.conf.useCommercialFonts
+    ? "YurukaStd, SSFangTangTi, LilitaOne, ChildFunSansFusion-Z"
+    : "LilitaOne, ChildFunSansFusion-Z",
 );
 
 const draw = (conf: DrawConf) => {
@@ -30,12 +32,12 @@ const draw = (conf: DrawConf) => {
 
   if (!ctx) return console.error("无法获取Context2D");
   imageRef.value.onload = () => {
-    let img = imageRef.value;
-    let hRatio = canvas.width / img.width;
-    let vRatio = canvas.height / img.height;
-    let aRatio = Math.min(hRatio, vRatio);
-    let centerShiftX = (canvas.width - img.width * aRatio) / 2;
-    let centerShiftY = (canvas.height - img.height * aRatio) / 2;
+    const img = imageRef.value;
+    const hRatio = canvas.width / img.width;
+    const vRatio = canvas.height / img.height;
+    const aRatio = Math.min(hRatio, vRatio);
+    const centerShiftX = (canvas.width - img.width * aRatio) / 2;
+    const centerShiftY = (canvas.height - img.height * aRatio) / 2;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(
       img,
@@ -61,7 +63,7 @@ const draw = (conf: DrawConf) => {
     const lines = text.split("\n");
     const angle = (Math.PI * text.length) / 7;
     if (curve) {
-      for (let line of lines) {
+      for (const line of lines) {
         for (let i = 0; i < line.length; i++) {
           ctx.rotate(angle / line.length / 2.5);
           ctx.save();

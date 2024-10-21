@@ -49,6 +49,7 @@ try {
     });
 } catch (e) {
   loading.value = false;
+  console.error(e);
   MessagePlugin.error("获取导航信息失败");
 }
 </script>
