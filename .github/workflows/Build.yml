@@ -1,4 +1,4 @@
-name: Build & Release
+name: Build
 
 on:
   push:
@@ -32,6 +32,7 @@ jobs:
       - name: Archive Dist
         run: |
           cd Monologue
+          rm -rf public
           mv dist public
           zip -r monologue-view.zip public
           mv monologue-view.zip ../
