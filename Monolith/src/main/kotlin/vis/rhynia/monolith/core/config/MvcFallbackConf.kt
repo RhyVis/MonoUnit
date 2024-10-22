@@ -22,7 +22,7 @@ class MvcFallbackConf(
         registry
             .addResourceHandler("/**")
             .addResourceLocations(*webProperties.resources.staticLocations)
-            .addResourceLocations("file:$rootDir/static/", "file:$rootDir/public/")
+            .addResourceLocations("file:$rootDir/static/")
             .resourceChain(true)
             .addResolver(
                 object : PathResourceResolver() {
