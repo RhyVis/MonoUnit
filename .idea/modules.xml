@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MonoUnit.iml" filepath="$PROJECT_DIR$/MonoUnit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Monolith/Monolith.iml" filepath="$PROJECT_DIR$/Monolith/Monolith.iml" />
       <module fileurl="file://$PROJECT_DIR$/Monologue/Monologue.iml" filepath="$PROJECT_DIR$/Monologue/Monologue.iml" />
     </modules>
   </component>
