@@ -1,11 +1,17 @@
-const alphabetCharset = "0123456789" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz";
+const numberSet = "0123456789";
+const alphabetCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz";
+const greekCharset = "αβγδεζηθικλμνξοπρστυφχψω" + "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ";
+const russianCharset = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" + "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+
+const basicCharset = numberSet + alphabetCharset;
+const extendedCharset = numberSet + alphabetCharset + greekCharset + russianCharset;
 
 function radixVal(
   input: string,
   iRadix: number,
   oRadix: number,
-  iCharset: string = alphabetCharset,
-  oCharset: string = alphabetCharset,
+  iCharset: string = basicCharset,
+  oCharset: string = basicCharset,
 ) {
   try {
     if (iCharset.length < 2 || oCharset.length < 2) return "基数过小";
@@ -34,11 +40,20 @@ function radixVal(
 
 function decimalRadixVal(
   input: number,
-  radix: number,
-  iCharset: string = alphabetCharset,
-  oCharset: string = alphabetCharset,
+  radix: number = basicCharset.length,
+  iCharset: string = numberSet,
+  oCharset: string = basicCharset,
 ) {
   return radixVal(input.toString(), 10, radix, iCharset, oCharset);
 }
 
-export { radixVal, decimalRadixVal };
+function decimalRadixValExtended(
+  input: number,
+  radix: number = extendedCharset.length,
+  iCharset: string = numberSet,
+  oCharset: string = extendedCharset,
+) {
+  return radixVal(input.toString(), 10, radix, iCharset, oCharset);
+}
+
+export { radixVal, decimalRadixVal, decimalRadixValExtended };

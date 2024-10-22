@@ -3,11 +3,17 @@ import { computed, onMounted, ref } from "vue";
 import { getVersion } from "@/lib/util/apiMethods";
 import { MessagePlugin } from "tdesign-vue-next";
 import { ArrowLeftIcon, RefreshIcon } from "tdesign-icons-vue-next";
-import { decimalRadixVal } from "@/pages/util/radix/scripts/radix";
+import { decimalRadixValExtended } from "@/pages/util/radix/scripts/radix";
 import VersionView from "@/assets/local/version.json";
 import moment from "moment";
 
 const loading = ref(true);
+
+const versionFont = ref({
+  fontFamily:
+    "IosevkaRx, Source Code Pro, -apple-system, BlinkMacSystemFont, Segoe UI," +
+    "Roboto, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, monospace, serif",
+});
 
 const vLocal = VersionView.compileTime;
 const vRemote = ref(0);
@@ -19,13 +25,13 @@ const vDisplay = computed(() => {
       return {
         theme: "success",
         icon: () => <t-icon name="check-circle" />,
-        value: `${decimalRadixVal(vLocal, 62)} 最新版本`,
+        value: `${decimalRadixValExtended(vLocal)} 最新版本`,
       };
     case 1:
       return {
         theme: "warning",
         icon: () => <t-icon name="info-circle" />,
-        value: `${decimalRadixVal(vLocal, 62)} -> ${decimalRadixVal(vRemote.value, 62)} 需要更新`,
+        value: `${decimalRadixValExtended(vLocal)} -> ${decimalRadixValExtended(vRemote.value)} 需要更新`,
       };
     case -1:
       return {
@@ -88,11 +94,11 @@ onMounted(async () => {
     <t-space direction="vertical" class="r-no-select">
       <div>
         <t-tag :theme="vDisplay.theme" size="small" :icon="vDisplay.icon">
-          {{ vDisplay.value }}
+          <span :style="versionFont">{{ vDisplay.value }}</span>
         </t-tag>
       </div>
       <div v-if="vState !== 0">
-        <t-space>
+        <t-space style="font-family: serif">
           <t-button size="small" shape="circle" :theme="vDisplay.theme" @click="handleUpdate">
             <RefreshIcon />
           </t-button>
@@ -102,16 +108,23 @@ onMounted(async () => {
       </div>
     </t-space>
   </t-card>
-  <t-dialog v-model:visible="showDialog" header="版本更新" theme="warning" :close-btn="false" @confirm="handleUpdate">
+  <t-dialog
+    v-model:visible="showDialog"
+    header="版本更新"
+    theme="warning"
+    confirm-btn="更新"
+    :close-btn="false"
+    @confirm="handleUpdate"
+  >
     <t-space direction="vertical" class="r-no-select">
       <div>检查到新版本：</div>
       <div>
         <span>构建版本：</span>
-        <t-tag>{{ decimalRadixVal(vRemote, 62) }}</t-tag>
+        <t-tag :style="versionFont">{{ decimalRadixValExtended(vRemote) }}</t-tag>
       </div>
       <div>
         <span>构建时间：</span>
-        <t-tag>{{ moment(vRemote).format("YYYY/MM/DD HH:mm:ss") }}</t-tag>
+        <t-tag :style="versionFont">{{ moment(vRemote).format("YYYY/MM/DD HH:mm:ss") }}</t-tag>
       </div>
       <div>是否更新？</div>
     </t-space>
