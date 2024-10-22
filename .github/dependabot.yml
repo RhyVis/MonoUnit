@@ -1,13 +1,14 @@
 version: 2
 updates:
-  - open-pull-requests-limit: 25
   - package-ecosystem: npm
     directory: "/Monologue"
     target-branch: dev
+    open-pull-requests-limit: 15
     schedule:
       interval: weekly
   - package-ecosystem: gradle
     directory: "/Monolith"
     target-branch: dev
+    open-pull-requests-limit: 15
     schedule:
       interval: weekly
