@@ -28,7 +28,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json")
     implementation("cn.hutool:hutool-all:5.8.32")
     implementation("com.github.houbb:opencc4j:1.8.1")
-    implementation("org.bouncycastle:bcprov-jdk18on:1.78.1")
     runtimeOnly("com.mysql:mysql-connector-j")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -71,7 +70,7 @@ tasks.withType<Test> {
 }
 
 tasks.processResources {
-    dependsOn("copyView")
+    mustRunAfter("copyView")
 }
 
 tasks.jar {
