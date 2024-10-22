@@ -1,18 +1,20 @@
 name: Trigger
 
 on:
-  workflow_run:
-    workflows: ["Build"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
+      - uses: benjlevesque/short-sha@v3.0
+        id: short-sha
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.GH_PRIV_REPO_DISPATCHER_KEY }}
           repository: RhyVis/MonoUnit-Assembly
           event-type: build_trigger
+          client-payload: '{"sha": "${{ steps.short-sha.outputs.sha }}"}'
