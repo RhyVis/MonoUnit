@@ -31,6 +31,14 @@ const fontList = [
     name: "GlowSans",
     url: "/font/GlowSansSC-Normal-Heavy.otf",
   },
+  {
+    name: "IosevkaRx",
+    url: "/font/IosevkaRx-Regular.woff2",
+  },
+  {
+    name: "IosevkaRx",
+    url: "/font/IosevkaRx-Bold.woff2",
+  },
 ];
 
 const base = import.meta.env.VITE_RES_ROOT;
