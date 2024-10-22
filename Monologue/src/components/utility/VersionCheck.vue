@@ -5,6 +5,7 @@ import { MessagePlugin } from "tdesign-vue-next";
 import { ArrowLeftIcon, RefreshIcon } from "tdesign-icons-vue-next";
 import { decimalRadixVal } from "@/pages/util/radix/scripts/radix";
 import VersionView from "@/assets/local/version.json";
+import moment from "moment";
 
 const loading = ref(true);
 
@@ -40,6 +41,7 @@ const vDisplay = computed(() => {
       };
   }
 });
+const showDialog = ref(false);
 
 const handleUpdate = () => {
   if (vState.value != 0) {
@@ -51,6 +53,7 @@ const handleUpdate = () => {
         document.close();
       });
   }
+  showDialog.value = false;
 };
 
 onMounted(async () => {
@@ -61,6 +64,7 @@ onMounted(async () => {
       console.log(`vR: ${v} | vL: ${vLocal}`);
       if (v != vLocal) {
         vState.value = 1;
+        showDialog.value = true;
         await MessagePlugin.warning("当前版本不是最新版本");
       } else {
         vState.value = 0;
@@ -98,6 +102,20 @@ onMounted(async () => {
       </div>
     </t-space>
   </t-card>
+  <t-dialog v-model:visible="showDialog" header="版本更新" theme="warning" :close-btn="false" @confirm="handleUpdate">
+    <t-space direction="vertical" class="r-no-select">
+      <div>检查到新版本：</div>
+      <div>
+        <span>构建版本：</span>
+        <t-tag>{{ decimalRadixVal(vRemote, 62) }}</t-tag>
+      </div>
+      <div>
+        <span>构建时间：</span>
+        <t-tag>{{ moment(vRemote).format("YYYY/MM/DD HH:mm:ss") }}</t-tag>
+      </div>
+      <div>是否更新？</div>
+    </t-space>
+  </t-dialog>
 </template>
 
 <style scoped>
