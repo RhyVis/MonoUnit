@@ -15,7 +15,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.25"
     id("org.springframework.boot") version "3.3.4"
     id("io.spring.dependency-management") version "1.1.6"
-    id("org.hibernate.orm") version "6.5.3.Final"
+    id("org.hibernate.orm") version "6.6.1.Final"
     id("org.graalvm.buildtools.native") version "0.10.3"
     id("com.github.node-gradle.node") version "7.0.2"
 }
