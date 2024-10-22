@@ -1,5 +1,6 @@
 package vis.rhynia.monolith.core.config
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.web.WebProperties
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.io.Resource
@@ -14,10 +15,14 @@ import org.springframework.web.servlet.resource.PathResourceResolver
 class MvcFallbackConf(
     private val webProperties: WebProperties,
 ) : WebMvcConfigurer {
+    @Value("\${user.dir}")
+    private lateinit var rootDir: String
+
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry
             .addResourceHandler("/**")
             .addResourceLocations(*webProperties.resources.staticLocations)
+            .addResourceLocations("file:$rootDir/static/", "file:$rootDir/public/")
             .resourceChain(true)
             .addResolver(
                 object : PathResourceResolver() {
@@ -33,8 +38,8 @@ class MvcFallbackConf(
 
     override fun addInterceptors(registry: InterceptorRegistry) {
         WebContentInterceptor().apply {
-            addCacheMapping(CacheControl.noCache(), "/index.html")
-            addCacheMapping(CacheControl.noStore(), "/index.html")
+            addCacheMapping(CacheControl.noCache(), "index.html")
+            addCacheMapping(CacheControl.noStore(), "index.html")
             registry.addInterceptor(this)
         }
     }

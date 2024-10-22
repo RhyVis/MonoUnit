@@ -25,15 +25,17 @@ jobs:
         run: |
           cd Monolith
           chmod +x ./gradlew
+          echo "Building Monolith"
           ./gradlew build -x test
           mv build/libs/mono-unit*.jar ../
+          echo "Building Monologue"
+          ./gradlew buildView
 
       - name: Archive Dist
         run: |
           cd Monologue
-          rm -rf public
-          mv dist public
-          zip -r monologue-view.zip public
+          mv dist static
+          zip -r monologue-view.zip static
           mv monologue-view.zip ../
 
       - name: Release
