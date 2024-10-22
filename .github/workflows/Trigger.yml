@@ -1,0 +1,18 @@
+name: Trigger
+
+on:
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GH_PRIV_REPO_DISPATCHER_KEY }}
+          repository: RhyVis/MonoUnit-Assembly
+          event-type: build_trigger
