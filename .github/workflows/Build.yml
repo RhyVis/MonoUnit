@@ -27,6 +27,7 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build -x test
           mv build/libs/mono-unit*.jar ../
+          ./gradlew buildView
 
       - name: Archive Dist
         run: |
