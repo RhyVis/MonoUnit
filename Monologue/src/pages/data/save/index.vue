@@ -3,11 +3,14 @@ import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import ButtonCopy from "@/components/btn/ButtonCopy.vue";
 import ButtonClear from "@/components/btn/ButtonClear.vue";
 import ButtonRead from "@/components/btn/ButtonRead.vue";
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { MessagePlugin } from "tdesign-vue-next";
 import { apiPost } from "@/lib/util/apiMethods";
 import { DownloadIcon, UploadIcon } from "tdesign-icons-vue-next";
+import { useSaveStore } from "@/store/comps/save";
 import type { SaveEntry } from "@/pages/data/save/scripts/entryType";
+
+const saveStore = useSaveStore();
 
 const query = reactive({
   id: 0,
@@ -34,6 +37,7 @@ const handleStore = async () => {
       const dt = (await apiPost("/api/update", query)).data;
       if (dt === 0) {
         result.sign = "存储成功";
+        saveStore.update(query.id);
         await MessagePlugin.success("存储成功");
       } else {
         console.error(dt);
@@ -65,6 +69,7 @@ const handleSelect = async () => {
         result.text = query.text = text;
         result.note = query.note = note;
         result.sign = "读取成功";
+        saveStore.update(query.id);
         await MessagePlugin.success("读取成功");
       }
     }
@@ -76,6 +81,10 @@ const handleSelect = async () => {
     loading.value = false;
   }
 };
+
+onMounted(() => {
+  query.id = saveStore.id;
+});
 </script>
 
 <template>
@@ -85,13 +94,13 @@ const handleSelect = async () => {
         <t-textarea v-model="query.text" :autosize="true" placeholder="存储内容" />
       </t-form-item>
       <t-form-item label="存储备注">
-        <t-input v-model="query.note" :auto-width="true" placeholder="存储备注" />
+        <t-input v-model="query.note" placeholder="存储备注" />
       </t-form-item>
       <t-form-item label="读取内容">
         <t-textarea :autosize="true" :readonly="true" :value="result.text" placeholder="读取内容" />
       </t-form-item>
       <t-form-item label="读取备注">
-        <t-input :auto-width="true" :readonly="true" :value="result.note" placeholder="读取备注" />
+        <t-input :value="result.note" :readonly="true" placeholder="读取备注" />
       </t-form-item>
       <t-divider />
       <t-form-item label="ID">

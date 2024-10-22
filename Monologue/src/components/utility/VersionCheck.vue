@@ -102,7 +102,14 @@ onMounted(async () => {
       </div>
     </t-space>
   </t-card>
-  <t-dialog v-model:visible="showDialog" header="版本更新" theme="warning" :close-btn="false" @confirm="handleUpdate">
+  <t-dialog
+    v-model:visible="showDialog"
+    header="版本更新"
+    theme="warning"
+    confirm-btn="更新"
+    :close-btn="false"
+    @confirm="handleUpdate"
+  >
     <t-space direction="vertical" class="r-no-select">
       <div>检查到新版本：</div>
       <div>
