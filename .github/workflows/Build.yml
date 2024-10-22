@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: 22.10.0
       - uses: actions/setup-java@v4.3.0
         with:
           distribution: 'zulu'
@@ -25,9 +25,8 @@ jobs:
         run: |
           cd Monolith
           chmod +x ./gradlew
-          ./gradlew publish -x test
+          ./gradlew build -x test
           mv build/libs/mono-unit*.jar ../
-          cd ..
 
       - name: Archive Dist
         run: |
@@ -36,7 +35,6 @@ jobs:
           mv dist public
           zip -r monologue-view.zip public
           mv monologue-view.zip ../
-          cd ..
 
       - name: Release
         uses: ncipollo/release-action@v1.14.0
