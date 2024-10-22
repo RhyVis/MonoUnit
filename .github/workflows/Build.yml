@@ -31,18 +31,11 @@ jobs:
           echo "Building Monologue"
           ./gradlew buildView
 
-      - name: Archive Dist
-        run: |
-          cd Monologue
-          mv dist static
-          zip -r monologue-view.zip static
-          mv monologue-view.zip ../
-
       - name: Release
         uses: ncipollo/release-action@v1.14.0
         with:
           name: TestBuild
-          artifacts: "mono-unit.jar,mono-unit-plain.jar,monologue-view.zip"
+          artifacts: "mono-unit.jar"
           tag: "prebuild"
           allowUpdates: true
           prerelease: true
