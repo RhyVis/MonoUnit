@@ -61,6 +61,7 @@ onMounted(async () => {
       console.log(`vR: ${v} | vL: ${vLocal}`);
       if (v != vLocal) {
         vState.value = 1;
+        await MessagePlugin.warning("当前版本不是最新版本");
       } else {
         vState.value = 0;
       }

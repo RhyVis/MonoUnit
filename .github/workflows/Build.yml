@@ -25,11 +25,8 @@ jobs:
         run: |
           cd Monolith
           chmod +x ./gradlew
-          echo "Building Monolith"
           ./gradlew build -x test
-          mv build/libs/mono-unit*.jar ../
-          echo "Building Monologue"
-          ./gradlew buildView
+          mv build/libs/mono-unit.jar ../
 
       - name: Release
         uses: ncipollo/release-action@v1.14.0
