@@ -31,7 +31,7 @@
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.259",
+    "@iconify/json": "^2.2.262",
     "@tsconfig/node20": "^20.1.4",
     "@types/bootstrap": "^5.2.10",
     "@types/crypto-js": "^4.2.2",
