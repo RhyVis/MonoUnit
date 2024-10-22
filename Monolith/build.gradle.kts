@@ -17,7 +17,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6"
     id("org.hibernate.orm") version "6.6.1.Final"
     id("org.graalvm.buildtools.native") version "0.10.3"
-    id("com.github.node-gradle.node") version "7.0.2"
+    id("com.github.node-gradle.node") version "7.1.0"
 }
 
 dependencies {
