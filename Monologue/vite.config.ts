@@ -64,6 +64,11 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 850,
   },
+  css: {
+    preprocessorOptions: {
+      less: {},
+    },
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

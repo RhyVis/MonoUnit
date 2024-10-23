@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import CLinkPri from "@/pages/base/credits/comps/CLinkPri.vue";
 import CLinkN from "@/pages/base/credits/comps/CLinkN.vue";
+import CLinkPri from "@/pages/base/credits/comps/CLinkPri.vue";
 import { useGlobalStore } from "@/store/global";
 import { HomeIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";
@@ -116,7 +116,7 @@ const counterIncrement = () => {
       </ul>
     </t-paragraph>
     <template #actions>
-      <HomeIcon @click="counterIncrement" style="user-select: none" />
+      <HomeIcon class="r-no-select" @click="counterIncrement" />
     </template>
   </ContentLayout>
 </template>

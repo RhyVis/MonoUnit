@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
 import { validateToken } from "@/lib/util/authFunction";
+import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
@@ -9,7 +9,7 @@ export const useAuthStore = defineStore("auth", {
   getters: {
     async validate(state) {
       try {
-        state.valid = await validateToken(state.token)
+        state.valid = await validateToken(state.token);
         return state.valid;
       } catch (e) {
         console.error(e);

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref } from "vue";
-import { assembleSrc, charaList } from "@/pages/draw/pjsk-sticker/scripts/sticker";
 import type { DrawConf } from "@/lib/type/typeSticker";
+import { assembleSrc, charaList } from "@/pages/draw/pjsk-sticker/scripts/sticker";
+import { computed, onMounted, ref } from "vue";
 
 const props = defineProps<{
   conf: DrawConf;
@@ -100,7 +100,7 @@ onMounted(() => {
 
 <style scoped>
 #sticker-canvas {
-  border-radius: 8px;
   border: 1px solid #bbb;
+  border-radius: 8px;
 }
 </style>

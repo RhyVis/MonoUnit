@@ -56,4 +56,4 @@ function decimalRadixValExtended(
   return radixVal(input.toString(), 10, radix, iCharset, oCharset);
 }
 
-export { radixVal, decimalRadixVal, decimalRadixValExtended };
+export { decimalRadixVal, decimalRadixValExtended, radixVal };

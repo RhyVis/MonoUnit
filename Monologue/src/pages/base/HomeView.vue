@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import CardLayout from "@/layout/frame/ContentLayout.vue";
-import VersionCheck from "@/components/utility/VersionCheck.vue";
 import LoadStatus from "@/components/utility/LoadStatus.vue";
+import VersionCheck from "@/components/utility/VersionCheck.vue";
+import CardLayout from "@/layout/frame/ContentLayout.vue";
 import { useGlobalStore } from "@/store/global";
 
 const global = useGlobalStore();

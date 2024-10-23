@@ -1,8 +1,8 @@
 <script lang="tsx" setup>
 import type { CardDisplay } from "@/lib/type/typeTarot";
-import { computed } from "vue";
-import { MessagePlugin } from "tdesign-vue-next";
 import { MoonIcon, SunnyIcon } from "tdesign-icons-vue-next";
+import { MessagePlugin } from "tdesign-vue-next";
+import { computed } from "vue";
 
 const props = defineProps<{
   card: CardDisplay;
@@ -28,7 +28,7 @@ const handleDesc = () => {
 </script>
 
 <template>
-  <t-card :header-bordered="true" class="mb-2 r-tarot-main-card-override">
+  <t-card class="r-tarot-main-card-override mb-2" :header-bordered="true">
     <template #title>
       <div class="text-primary r-no-select" @click="handleImage">
         {{ card.data.loc }}
@@ -43,12 +43,12 @@ const handleDesc = () => {
       <div class="r-tarot-main-div-full" @click="handleDesc">
         <div v-show="!card.showDesc">
           <t-image
+            class="r-tarot-img-fit"
             :alt="card.data.name"
             :class="revClass"
             :lazy="true"
             :src="card.data.img"
             :style="{ width: 'fit-content', maxWidth: '100%', height: '360px' }"
-            class="r-tarot-img-fit"
             fit="scale-down"
             loading="💫"
             @error="handleImageErr(card.data.name)"
@@ -77,8 +77,8 @@ const handleDesc = () => {
 }
 
 .r-tarot-main-div-full {
-  height: 360px;
   flex: 1;
+  height: 360px;
   text-align: center;
 }
 

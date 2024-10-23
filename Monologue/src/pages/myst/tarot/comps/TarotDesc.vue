@@ -22,7 +22,7 @@ const revDesc = (card: CardDisplay) => (card.data.rev ? card.data.desc.reverse :
       </span>
     </template>
     <template #actions>
-      <t-tag theme="primary" class="r-tarot-desc-tag">{{ revText(card.data.rev) }}</t-tag>
+      <t-tag class="r-tarot-desc-tag" theme="primary">{{ revText(card.data.rev) }}</t-tag>
     </template>
     <div>
       <t-title level="h6" :content="revDesc(card)" />
@@ -35,7 +35,7 @@ const revDesc = (card: CardDisplay) => (card.data.rev ? card.data.desc.reverse :
 
 <style scoped>
 .r-tarot-desc-tag {
-  user-select: none;
   font-weight: bold;
+  user-select: none;
 }
 </style>

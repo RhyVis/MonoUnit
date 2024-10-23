@@ -22,7 +22,7 @@ const emit = defineEmits(["select"]);
   <t-button @click="handleDrawer">选择角色</t-button>
   <t-drawer v-model:visible="visible" size="360px" :footer="false" header="Pick one!">
     <t-row :gutter="[2, 0]">
-      <t-col :span="4" v-for="(chara, index) in charaList" :key="index">
+      <t-col v-for="(chara, index) in charaList" :span="4" :key="index">
         <span class="r-chara-select-option" @click="handleSelect(index)">
           <t-image
             class="r-chara-select-inner-img"

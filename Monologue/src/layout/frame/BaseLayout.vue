@@ -19,8 +19,8 @@ import { Content as TContent } from "tdesign-vue-next";
 
 <style scoped>
 .r-footer-override :deep(.t-layout__footer) {
-  padding: 0;
   justify-content: center;
+  padding: 0;
 }
 
 :global(.r-limit-height) {

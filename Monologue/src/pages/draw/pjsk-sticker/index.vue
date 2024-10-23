@@ -87,7 +87,7 @@ onMounted(() => {
 
 <template>
   <ContentLayout title="PJSK表情" :subtitle="subtitle">
-    <div class="mt-1 mb-3" style="text-align: center">
+    <div class="mb-3 mt-1" style="text-align: center">
       <t-space :size="8" direction="vertical">
         <t-space :size="16" direction="horizontal">
           <div style="height: 300px; width: 300px">
@@ -118,7 +118,7 @@ onMounted(() => {
       <t-form-item label="字体尺寸">
         <t-slider v-model="currentConf.fontSize" :input-number-props="true" :max="100" :min="5" @change="proxyDraw" />
       </t-form-item>
-      <t-form-item label="行间距" v-if="textMultipleLines">
+      <t-form-item v-if="textMultipleLines" label="行间距">
         <t-slider v-model="currentConf.spaceSize" :input-number-props="true" :max="80" :min="1" @change="proxyDraw" />
       </t-form-item>
       <t-form-item label="旋转">

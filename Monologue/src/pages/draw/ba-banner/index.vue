@@ -1,7 +1,7 @@
 <script lang="tsx" setup>
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import BannerCanvas from "@/pages/draw/ba-banner/comps/BannerCanvas.vue";
-import AdvancedOptContainer from "@/components/menu/AdvancedOptContainer.vue";
+import AdvancedOptContainer from "@/components/menu/AdvOptContainer.vue";
 import { ref } from "vue";
 import { CopyIcon, DownloadIcon, RefreshIcon } from "tdesign-icons-vue-next";
 import { copyImage, downloadImage } from "@/lib/util/imageUtil";
@@ -42,7 +42,7 @@ const handleDownloadImage = async () => {
 
 <template>
   <ContentLayout title="BA横幅" :subtitle="subtitle">
-    <div class="mt-1 mb-3" style="text-align: center">
+    <div class="mb-3 mt-1" style="text-align: center">
       <div>
         <BannerCanvas
           :key="canvasKey"

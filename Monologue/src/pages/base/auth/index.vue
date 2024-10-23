@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import { ref } from "vue";
 import { useAuthStore } from "@/store/comps/auth";
-import { MessagePlugin } from "tdesign-vue-next";
 import { ArrowUpDown2Icon } from "tdesign-icons-vue-next";
+import { MessagePlugin } from "tdesign-vue-next";
+import { ref } from "vue";
 
 const auth = useAuthStore();
 
@@ -44,8 +44,8 @@ const handleValidation = async () => {
   <ContentLayout title="校验" subtitle="你来到了神秘的页面">
     <t-form>
       <t-form-item label="当前状态">
-        <t-tag class="r-no-select" shape="round" theme="success" content="通过" v-if="auth.valid" />
-        <t-tag class="r-no-select" shape="round" theme="warning" content="失败" v-else />
+        <t-tag class="r-no-select" v-if="auth.valid" shape="round" theme="success" content="通过" />
+        <t-tag class="r-no-select" v-else shape="round" theme="warning" content="失败" />
       </t-form-item>
       <t-form-item label="校验码">
         <t-input v-model="token" />

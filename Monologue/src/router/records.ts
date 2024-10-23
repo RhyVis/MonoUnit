@@ -132,5 +132,5 @@ const utilRecords: RouterRecordAssemble[] = [
   },
 ];
 
-export { baseRecords, dataRecords, mystRecords, drawRecords, utilRecords };
+export { baseRecords, dataRecords, drawRecords, mystRecords, utilRecords };
 export type { RouterRecordAssemble };

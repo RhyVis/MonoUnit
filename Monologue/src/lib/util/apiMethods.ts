@@ -1,5 +1,5 @@
-import instance from "@/lib/util/apiHttp";
 import type { ApiResponse, CompileTime } from "@/lib/type/typeApi";
+import instance from "@/lib/util/apiHttp";
 
 /**
  * Standard Request Object
@@ -54,4 +54,4 @@ async function getVersion(): Promise<number> {
   return ((await instance.get("/version.json")).data as CompileTime).compileTime;
 }
 
-export { apiGet, apiPost, apiPut, apiDelete, getVersion };
+export { apiDelete, apiGet, apiPost, apiPut, getVersion };

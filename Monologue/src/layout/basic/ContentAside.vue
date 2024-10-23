@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import ProjectIcon from "@/assets/icon.svg";
+import { dataRecords, drawRecords, mystRecords, utilRecords } from "@/router/records";
+import { useAuthStore } from "@/store/comps/auth";
+import { useGlobalStore } from "@/store/global";
 import {
   CloseIcon,
   DataBaseIcon,
@@ -10,17 +13,8 @@ import {
   RelationIcon,
   ToolsIcon,
 } from "tdesign-icons-vue-next";
-import { computed, onMounted, ref } from "vue";
-import { useGlobalStore } from "@/store/global";
-import { dataRecords, drawRecords, mystRecords, utilRecords } from "@/router/records";
-import { useAuthStore } from "@/store/comps/auth";
-import useProxy from "@/lib/util/useProxy";
+import { computed, onMounted } from "vue";
 
-const fontStyle = ref<Record<string, string>>({
-  fontFamily: useProxy().$fontFamily,
-  fontSize: "larger",
-  userSelect: "none",
-});
 const global = useGlobalStore();
 const auth = useAuthStore();
 
@@ -43,12 +37,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <t-drawer v-model:visible="visible" placement="left" size="232px" :footer="false" class="r-drawer-no-padding">
-    <t-menu :expand-mutex="true" style="max-height: 100vh">
+  <t-drawer class="r-ct-sd r-drawer-no-padding" v-model:visible="visible" placement="left" size="232px" :footer="false">
+    <t-menu class="r-ct-sd-ht" :expand-mutex="true">
       <!-- Head -->
       <template #logo>
-        <t-image shape="round" :src="ProjectIcon" alt="MonoUnit" style="width: 30px; height: 30px" />
-        <span :style="fontStyle">MonoUnit</span>
+        <t-image class="r-ct-icon" shape="round" :src="ProjectIcon" alt="MonoUnit" />
+        <span class="r-ct-sd-tt">MonoUnit</span>
       </template>
       <t-menu-item to="/" @click="handleClose">
         <template #icon>
@@ -159,8 +153,25 @@ onMounted(() => {
   </t-drawer>
 </template>
 
-<style scoped>
+<style scoped lang="less">
+@import "@/assets/style/mixin";
+
 :global(.r-drawer-no-padding .t-drawer__body) {
   padding: 0;
+}
+
+.r-ct-sd {
+  .r-ct-sd-ht {
+    height: 100vh;
+  }
+  .r-ct-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .r-ct-sd-tt {
+    font-size: larger;
+    .r-font-chain();
+    .r-no-select();
+  }
 }
 </style>

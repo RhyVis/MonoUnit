@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import { RefreshIcon } from "tdesign-icons-vue-next";
-import { MessagePlugin } from "tdesign-vue-next";
-import { reverseModes } from "@/pages/util/reverse/scripts/reverse";
-import ContentLayout from "@/layout/frame/ContentLayout.vue";
+import ButtonClear from "@/components/btn/ButtonClear.vue";
 import ButtonCopy from "@/components/btn/ButtonCopy.vue";
 import ButtonRead from "@/components/btn/ButtonRead.vue";
-import ButtonClear from "@/components/btn/ButtonClear.vue";
+import ContentLayout from "@/layout/frame/ContentLayout.vue";
+import { reverseModes } from "@/pages/util/reverse/scripts/reverse";
+import { RefreshIcon } from "tdesign-icons-vue-next";
+import { MessagePlugin } from "tdesign-vue-next";
+import { reactive, ref } from "vue";
 
 const query = reactive({
   text: "",
