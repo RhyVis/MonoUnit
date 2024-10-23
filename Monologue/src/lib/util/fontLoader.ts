@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const fontList = [
   {
     name: "YurukaStd",
@@ -45,14 +47,17 @@ const base = import.meta.env.VITE_RES_ROOT;
 
 async function loadFonts() {
   try {
-    for (const font of fontList) {
+    const loadPromises = fontList.map(async font => {
       const fontFace = new FontFace(font.name, `url(${base + font.url})`);
-      const loaded = await fontFace.load();
-      document.fonts.add(loaded);
-      console.debug(`Successfully loaded ${font.name}`);
-    }
+      return fontFace.load().then(loadedFont => {
+        document.fonts.add(loadedFont);
+        console.debug(`Successfully loaded ${font.name}`);
+      });
+    });
+    await Promise.all(loadPromises);
     console.log("Successfully loaded all fonts");
   } catch (e) {
+    console.error("Failed to load fonts", e);
     throw e;
   }
 }

@@ -1,6 +1,8 @@
 # Mono-Unit
 
-[![Build](https://github.com/RhyVis/MonoUnit/actions/workflows/Build.yml/badge.svg)](https://github.com/RhyVis/MonoUnit/actions/workflows/Build.yml)
+![Static Badge](https://img.shields.io/badge/Version-2.1.0-violet)
+![Static Badge](https://img.shields.io/badge/Monolith_Backend-Kotlin-blue)
+![Static Badge](https://img.shields.io/badge/Monologue_Frontend-Vue-green)
 ![GitHub last commit](https://img.shields.io/github/last-commit/RhyVis/MonoUnit)
 
 A project for learning and self-use
