@@ -6,13 +6,15 @@ import { ArrowLeftIcon, RefreshIcon } from "tdesign-icons-vue-next";
 import { decimalRadixValExtended } from "@/pages/util/radix/scripts/radix";
 import VersionView from "@/assets/local/version.json";
 import moment from "moment";
+import useProxy from "@/lib/util/useProxy";
+
+const proxy = useProxy();
 
 const loading = ref(true);
 
 const versionFont = ref({
-  fontFamily:
-    "IosevkaRx, Source Code Pro, -apple-system, BlinkMacSystemFont, Segoe UI," +
-    "Roboto, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, monospace, serif",
+  fontWeight: "bold",
+  fontFamily: proxy.$fontFamily,
 });
 
 const vLocal = VersionView.compileTime;
@@ -71,7 +73,7 @@ onMounted(async () => {
       if (v != vLocal) {
         vState.value = 1;
         showDialog.value = true;
-        await MessagePlugin.warning("当前版本不是最新版本");
+        await MessagePlugin.warning("非最新版本");
       } else {
         vState.value = 0;
       }
@@ -82,7 +84,7 @@ onMounted(async () => {
   } catch (e) {
     vState.value = -1;
     console.error(e);
-    await MessagePlugin.error("与服务器通信获取版本失败");
+    await MessagePlugin.error("与服务器通信失败");
   } finally {
     loading.value = false;
   }
@@ -90,8 +92,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <t-card :hover-shadow="true" :loading="loading" style="width: max-content">
-    <t-space direction="vertical" class="r-no-select">
+  <t-card :loading="loading" class="r-v-check-card-override" style="width: max-content">
+    <t-space direction="vertical" class="r-no-select" :size="8">
       <div>
         <t-tag :theme="vDisplay.theme" size="small" :icon="vDisplay.icon">
           <span :style="versionFont">{{ vDisplay.value }}</span>
@@ -134,5 +136,9 @@ onMounted(async () => {
 <style scoped>
 .r-no-select {
   user-select: none;
+}
+
+.r-v-check-card-override :deep(.t-card__body) {
+  padding: 10px 14px 8px;
 }
 </style>

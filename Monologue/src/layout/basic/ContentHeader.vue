@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { MenuFoldIcon, MenuUnfoldIcon } from "tdesign-icons-vue-next";
 import { useGlobalStore } from "@/store/global";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import ProjectIcon from "@/assets/icon.svg";
+import useProxy from "@/lib/util/useProxy";
 
-const dev = computed(() => import.meta.env.DEV);
+const proxy = useProxy();
 const store = useGlobalStore();
+const dev = computed(() => import.meta.env.DEV);
 const asideVisible = computed(() => store.asideVisible);
+const fontStyle = ref({ fontFamily: proxy.$fontFamily });
+const fontStyleSmaller = ref({ fontFamily: proxy.$fontFamily, fontSize: "smaller" });
 
 const handleAside = () => (store.asideVisible = !store.asideVisible);
 </script>
@@ -23,8 +27,9 @@ const handleAside = () => (store.asideVisible = !store.asideVisible);
       <t-space>
         <div>
           <t-space :size="4">
-            <span class="font-monospace">MonoUnit</span>
-            <span style="font-size: smaller">Toolbox 2.0</span>
+            <span :style="fontStyle">MonoUnit</span>
+            <span :style="fontStyleSmaller">Toolbox</span>
+            <i style="font-size: smaller">2.0</i>
           </t-space>
         </div>
         <div v-if="dev">

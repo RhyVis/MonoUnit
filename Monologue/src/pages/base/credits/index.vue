@@ -3,19 +3,14 @@ import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import CLinkPri from "@/pages/base/credits/comps/CLinkPri.vue";
 import CLinkN from "@/pages/base/credits/comps/CLinkN.vue";
 import { useGlobalStore } from "@/store/global";
-import { ref } from "vue";
 import { HomeIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";
 
 const global = useGlobalStore();
-const counter = ref(0);
 const counterIncrement = () => {
   if (!global.authShow) {
-    if (counter.value > 5) {
-      global.authShow = true;
-      MessagePlugin.info("Something went wrong...");
-    }
-    counter.value++;
+    global.authShow = true;
+    MessagePlugin.info("Something went wrong...");
   }
 };
 </script>
@@ -43,6 +38,7 @@ const counterIncrement = () => {
           )
         </li>
         <li>Cloudflare - Free static resource cache</li>
+        <li>https://img.r10086.com - Random anime pictures</li>
       </ul>
     </t-paragraph>
     <t-paragraph>
@@ -95,6 +91,9 @@ const counterIncrement = () => {
             </li>
             <li>
               <c-link-n href="https://github.com/welai/glow-sans">GlowSansSC</c-link-n>
+            </li>
+            <li>
+              <c-link-n href="https://github.com/be5invis/Iosevka">Iosevka Rx(Custom font based on Iosevka)</c-link-n>
             </li>
           </ul>
           Other fonts have commercial restrictions, or unclear licence, which is only for personal non-commercial usage:

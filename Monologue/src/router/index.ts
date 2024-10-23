@@ -18,6 +18,11 @@ const records: RouteRecordRaw[] = [
   ...drawRecords,
   ...utilRecords,
   {
+    path: "/error",
+    name: "404",
+    component: () => import("@/pages/base/error/index.vue"),
+  },
+  {
     path: "/:pathMatch(.*)",
     name: "404",
     component: () => import("@/pages/base/error/index.vue"),
@@ -27,6 +32,13 @@ const records: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes: records,
+  scrollBehavior(_to, _from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 router.beforeEach(async (to, _, next) => {
@@ -34,15 +46,14 @@ router.beforeEach(async (to, _, next) => {
     const auth = useAuthStore();
     const { token } = auth;
     if (token.length === 0) {
-      next("/");
-      await MessagePlugin.warning("不存在Token");
+      next("/error");
+      await MessagePlugin.warning("Token不存在");
     } else {
       const r = await validateToken(token);
       if (r) {
         next();
       } else {
-        next("/");
-        await MessagePlugin.warning("校验失败");
+        next("/error");
       }
     }
   } else {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ProjectIcon from "@/assets/icon.svg";
 import {
   CloseIcon,
   DataBaseIcon,
@@ -9,12 +10,17 @@ import {
   RelationIcon,
   ToolsIcon,
 } from "tdesign-icons-vue-next";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useGlobalStore } from "@/store/global";
 import { dataRecords, drawRecords, mystRecords, utilRecords } from "@/router/records";
-import ProjectIcon from "@/assets/icon.svg";
 import { useAuthStore } from "@/store/comps/auth";
+import useProxy from "@/lib/util/useProxy";
 
+const fontStyle = ref<Record<string, string>>({
+  fontFamily: useProxy().$fontFamily,
+  fontSize: "larger",
+  userSelect: "none",
+});
 const global = useGlobalStore();
 const auth = useAuthStore();
 
@@ -42,7 +48,7 @@ onMounted(() => {
       <!-- Head -->
       <template #logo>
         <t-image shape="round" :src="ProjectIcon" alt="MonoUnit" style="width: 30px; height: 30px" />
-        <span class="font-monospace">MonoUnit</span>
+        <span :style="fontStyle">MonoUnit</span>
       </template>
       <t-menu-item to="/" @click="handleClose">
         <template #icon>
