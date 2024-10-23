@@ -28,7 +28,7 @@ const handleDesc = () => {
 </script>
 
 <template>
-  <t-card :header-bordered="true" class="mb-2">
+  <t-card :header-bordered="true" class="mb-2 r-tarot-main-card-override">
     <template #title>
       <div class="text-primary r-no-select" @click="handleImage">
         {{ card.data.loc }}
@@ -50,7 +50,7 @@ const handleDesc = () => {
             :style="{ width: 'fit-content', maxWidth: '100%', height: '360px' }"
             class="r-tarot-img-fit"
             fit="scale-down"
-            loading="🤔"
+            loading="💫"
             @error="handleImageErr(card.data.name)"
           />
         </div>
@@ -80,5 +80,9 @@ const handleDesc = () => {
   height: 360px;
   flex: 1;
   text-align: center;
+}
+
+.r-tarot-main-card-override :deep(.t-card__body) {
+  height: 400px;
 }
 </style>

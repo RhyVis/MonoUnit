@@ -6,37 +6,36 @@ defineProps<{
   index: number;
 }>();
 
-const revText = (rev: boolean) => (rev ? "(逆位)" : "(正位)");
+const revText = (rev: boolean) => (rev ? "逆位" : "正位");
 const revDesc = (card: CardDisplay) => (card.data.rev ? card.data.desc.reverse : card.data.desc.upright);
 </script>
 
 <template>
   <t-card class="mb-2" :header-bordered="true">
     <template #title>
-      {{ index + 1 + "号位 " }}
+      <span>{{ index + 1 + "号位 " }}</span>
     </template>
     <template #subtitle>
       <span>
-        {{ card.data.loc }}
+        <span>{{ card.data.loc }}</span>
         <i style="font-size: xx-small"> {{ card.data.name }}</i>
       </span>
     </template>
     <template #actions>
-      <span class="r-no-select">
-        {{ revText(card.data.rev) }}
-      </span>
+      <t-tag theme="primary" class="r-tarot-desc-tag">{{ revText(card.data.rev) }}</t-tag>
     </template>
     <div>
       <t-title level="h6" :content="revDesc(card)" />
-      <div v-if="card.data.desc.desc.length > 0">
+      <t-paragraph v-if="card.data.desc.desc.length > 0">
         <t-text v-for="(line, index) in card.data.desc.desc" :key="index" :content="line" />
-      </div>
+      </t-paragraph>
     </div>
   </t-card>
 </template>
 
 <style scoped>
-.r-no-select {
+.r-tarot-desc-tag {
   user-select: none;
+  font-weight: bold;
 }
 </style>

@@ -61,6 +61,9 @@ export default defineConfig({
     }),
     Icon(),
   ],
+  build: {
+    chunkSizeWarningLimit: 850,
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
