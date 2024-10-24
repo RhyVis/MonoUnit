@@ -1,5 +1,3 @@
-import moment from "moment";
-
 const fontList = [
   {
     name: "YurukaStd",
@@ -24,10 +22,6 @@ const fontList = [
   {
     name: "RoGSanSrfStd-Bd",
     url: "/font/RoGSanSrfStd-Bd_CJK.woff2",
-  },
-  {
-    name: "RoGSanSrfStd-Bd",
-    url: "/font/RoGSanSrfStd-Bd-Original.woff2",
   },
   {
     name: "GlowSans",

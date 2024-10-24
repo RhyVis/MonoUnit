@@ -5,4 +5,4 @@ const charaList: CharacterDefinition[] = CharacterList;
 
 const assembleSrc = (s: string) => import.meta.env.VITE_RES_ROOT + "/pjsk-sticker/" + s;
 
-export { charaList, assembleSrc };
+export { assembleSrc, charaList };

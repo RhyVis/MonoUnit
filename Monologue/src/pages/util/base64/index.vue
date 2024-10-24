@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import { computed, ref } from "vue";
-import { Base64 } from "js-base64";
+import ButtonClear from "@/components/btn/ButtonClear.vue";
 import ButtonCopy from "@/components/btn/ButtonCopy.vue";
 import ButtonRead from "@/components/btn/ButtonRead.vue";
-import ButtonClear from "@/components/btn/ButtonClear.vue";
+import ContentLayout from "@/layout/frame/ContentLayout.vue";
+import { Base64 } from "js-base64";
+import { computed, ref } from "vue";
 
 const inputRef = ref("");
 const inputStatusRef = computed(() => {

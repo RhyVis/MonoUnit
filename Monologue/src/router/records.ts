@@ -72,6 +72,27 @@ const mystRecords: RouterRecordAssemble[] = [
   },
 ];
 
+const mathRecords: RouterRecordAssemble[] = [
+  {
+    path: "/radix",
+    name: "Radix",
+    component: () => import("@/pages/math/radix/index.vue"),
+    meta: {
+      title: "进制转换",
+      icon: "calculation-1",
+    },
+  },
+  {
+    path: "/roman",
+    name: "RomanNumeral",
+    component: () => import("@/pages/math/roman/index.vue"),
+    meta: {
+      title: "罗马数字",
+      icon: "castle",
+    },
+  },
+];
+
 const drawRecords: RouterRecordAssemble[] = [
   {
     path: "/pjsk-sticker",
@@ -121,16 +142,7 @@ const utilRecords: RouterRecordAssemble[] = [
       icon: "file-code-1",
     },
   },
-  {
-    path: "/radix",
-    name: "Radix",
-    component: () => import("@/pages/util/radix/index.vue"),
-    meta: {
-      title: "进制转换",
-      icon: "calculation-1",
-    },
-  },
 ];
 
-export { baseRecords, dataRecords, mystRecords, drawRecords, utilRecords };
+export { baseRecords, dataRecords, drawRecords, mathRecords, mystRecords, utilRecords };
 export type { RouterRecordAssemble };

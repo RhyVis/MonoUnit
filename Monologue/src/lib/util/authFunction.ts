@@ -1,5 +1,5 @@
-import CryptoJS from "crypto-js";
 import { apiPost } from "@/lib/util/apiMethods";
+import CryptoJS from "crypto-js";
 
 const validateToken = async (token: string) => {
   if (token.length > 0) {

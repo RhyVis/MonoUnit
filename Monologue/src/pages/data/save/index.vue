@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import ButtonCopy from "@/components/btn/ButtonCopy.vue";
 import ButtonClear from "@/components/btn/ButtonClear.vue";
+import ButtonCopy from "@/components/btn/ButtonCopy.vue";
 import ButtonRead from "@/components/btn/ButtonRead.vue";
-import { onMounted, reactive, ref } from "vue";
-import { MessagePlugin } from "tdesign-vue-next";
+import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import { apiPost } from "@/lib/util/apiMethods";
-import { DownloadIcon, UploadIcon } from "tdesign-icons-vue-next";
-import { useSaveStore } from "@/store/comps/save";
 import type { SaveEntry } from "@/pages/data/save/scripts/entryType";
+import { useSaveStore } from "@/store/comps/save";
+import { DownloadIcon, UploadIcon } from "tdesign-icons-vue-next";
+import { MessagePlugin } from "tdesign-vue-next";
+import { onMounted, reactive, ref } from "vue";
 
 const saveStore = useSaveStore();
 

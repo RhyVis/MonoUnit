@@ -32,7 +32,7 @@ const columns = ref<TableProps["columns"]>([
     width: 60,
     cell: (_, { row }) => {
       return (
-        <div style="text-align: center; user-select: none">
+        <div class="r-sp-column-tag">
           <t-tag shape="round" variant="outline">
             {row.id}
           </t-tag>
@@ -78,7 +78,7 @@ const handleSpam = async () => {
     store.update(query, conf);
   } catch (e) {
     console.error(e);
-    await MessagePlugin.error("获取信息失败")
+    await MessagePlugin.error("获取信息失败");
   } finally {
     resultLoading.value = false;
   }
@@ -97,9 +97,9 @@ onMounted(() => {
     <t-form>
       <t-tabs v-model="conf.activeTab" @change="changeTab">
         <!--祖安-->
-        <t-tab-panel label="祖安特区" value="spam" class="mt-2">
+        <t-tab-panel class="mt-2" label="祖安特区" value="spam">
           <t-form-item label="使用说明">
-            <span style="text-align: left">高强度版本容易被夹，建议转义</span>
+            <span class="r-sp-panel-desc">高强度版本容易被夹，建议转义</span>
           </t-form-item>
           <t-form-item label="选择强度">
             <t-radio-group v-model="query.type">
@@ -109,9 +109,9 @@ onMounted(() => {
           </t-form-item>
         </t-tab-panel>
         <!--MMR-->
-        <t-tab-panel label="二游笑话" value="mmr" class="mt-2">
+        <t-tab-panel class="mt-2" label="二游笑话" value="mmr">
           <t-form-item label="使用说明">
-            <span style="text-align: left">
+            <span class="r-sp-panel-desc">
               介于各路孝子挂对面的时候都是截图挂人，
               所以这数据库里面很多东西也都是OCR扫出来的，有错字就当二游痴子没文化吧
             </span>
@@ -128,9 +128,9 @@ onMounted(() => {
           </t-form-item>
         </t-tab-panel>
         <!--Meme-->
-        <t-tab-panel label="复制粘贴" value="meme" class="mt-2">
+        <t-tab-panel class="mt-2" label="复制粘贴" value="meme">
           <t-form-item label="使用说明">
-            <span style="text-align: left">我喜欢复制粘贴</span>
+            <span class="r-sp-panel-desc">我喜欢复制粘贴</span>
           </t-form-item>
           <t-form-item label="选择主题">
             <t-radio-group v-model="query.type" type="button">
@@ -146,7 +146,7 @@ onMounted(() => {
       </t-tabs>
       <div class="mt-4">
         <t-form-item label="转义方式">
-          <SelectSimple :options="codeTypes" v-model:selected="query.dict" />
+          <SelectSimple v-model:selected="query.dict" :options="codeTypes" />
         </t-form-item>
         <t-form-item label="妙语连珠">
           <t-input-number v-model="query.size" :min="1" :max="10" :auto-width="true" :allow-input-over-limit="false" />
@@ -161,7 +161,7 @@ onMounted(() => {
     </t-form>
     <!--结果-->
     <t-divider />
-    <div class="mt-2 mb-2" v-if="result.length > 0">
+    <div class="mb-2 mt-2" v-if="result.length > 0">
       <t-table
         size="small"
         row-key="id"
@@ -175,3 +175,16 @@ onMounted(() => {
     </div>
   </ContentLayout>
 </template>
+
+<style scoped lang="less">
+@import "@/assets/style/mixin.less";
+
+:global(.r-sp-column-tag) {
+  text-align: center;
+  .r-no-select();
+}
+
+.r-sp-panel-desc {
+  text-align: left;
+}
+</style>

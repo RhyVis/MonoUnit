@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { computed, onMounted, reactive, type Ref, ref } from "vue";
-import type { Card, CardDisplay, DeckInfo, DeckInfoInterface, DeckInfoSelect } from "@/lib/type/typeTarot";
-import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import SelectSimple from "@/components/select/SelectSimple.vue";
-import TarotMain from "@/pages/myst/tarot/comps/TarotMain.vue";
-import TarotDesc from "@/pages/myst/tarot/comps/TarotDesc.vue";
-import { CardIcon } from "tdesign-icons-vue-next";
+import ContentLayout from "@/layout/frame/ContentLayout.vue";
+import type { Card, CardDisplay, DeckInfo, DeckInfoInterface, DeckInfoSelect } from "@/lib/type/typeTarot";
 import { apiGet, apiPost } from "@/lib/util/apiMethods";
+import TarotDesc from "@/pages/myst/tarot/comps/TarotDesc.vue";
+import TarotMain from "@/pages/myst/tarot/comps/TarotMain.vue";
 import { useTarotStore } from "@/store/comps/tarot";
+import { CardIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";
+import { computed, onMounted, reactive, type Ref, ref } from "vue";
 
 const store = useTarotStore();
 
@@ -52,6 +52,7 @@ const handleSelect = () => {
   result.value.length = 0;
 };
 const handleDraw = async () => {
+  location.hash = "";
   loading.value = true;
   try {
     store.update(query, conf);

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import { apiPost } from "@/lib/util/apiMethods";
-import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import ButtonClear from "@/components/btn/ButtonClear.vue";
-import ButtonRead from "@/components/btn/ButtonRead.vue";
 import ButtonCopy from "@/components/btn/ButtonCopy.vue";
+import ButtonRead from "@/components/btn/ButtonRead.vue";
+import ContentLayout from "@/layout/frame/ContentLayout.vue";
+import { apiPost } from "@/lib/util/apiMethods";
 import { SendIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";
+import { reactive, ref } from "vue";
 
 const query = reactive({
   text: "哦牛",
@@ -44,7 +44,7 @@ const result = ref("");
     <t-form>
       <t-tabs v-model:value="query.type" @change="query.decode = false">
         <!-- 玩抽象的这辈子有了 -->
-        <t-tab-panel label="抽象转换" value="nmsl" class="mt-2">
+        <t-tab-panel class="mt-2" label="抽象转换" value="nmsl">
           <t-form-item label="原始文本">
             <t-textarea v-model="query.text" auto-size />
           </t-form-item>
@@ -53,7 +53,7 @@ const result = ref("");
           </t-form-item>
         </t-tab-panel>
         <!-- 繁体 -->
-        <t-tab-panel label="繁体转换" value="trad" class="mt-2">
+        <t-tab-panel class="mt-2" label="繁体转换" value="trad">
           <t-form-item label="原始文本">
             <t-textarea v-model="query.text" auto-size />
           </t-form-item>
@@ -62,7 +62,7 @@ const result = ref("");
           </t-form-item>
         </t-tab-panel>
         <!-- 火星文 -->
-        <t-tab-panel label="火星文化" value="sprk" class="mt-2">
+        <t-tab-panel class="mt-2" label="火星文化" value="sprk">
           <t-form-item label="原始文本">
             <t-textarea v-model="query.text" auto-size />
           </t-form-item>
@@ -71,7 +71,7 @@ const result = ref("");
           </t-form-item>
         </t-tab-panel>
         <!-- 形近字 -->
-        <t-tab-panel label="形近转换" value="diff" class="mt-2">
+        <t-tab-panel class="mt-2" label="形近转换" value="diff">
           <t-form-item label="原始文本">
             <t-textarea v-model="query.text" auto-size />
           </t-form-item>
@@ -79,7 +79,7 @@ const result = ref("");
       </t-tabs>
       <div class="mt-4">
         <t-form-item label="输出结果">
-          <t-loading size="small" :loading="loading" :delay="400" style="width: 100%">
+          <t-loading class="r-cd-out-loading" size="small" :loading="loading" :delay="400">
             <t-textarea :model-value="result" placeholder="返回内容" :autosize="true" :readonly="true" />
           </t-loading>
         </t-form-item>
@@ -99,3 +99,9 @@ const result = ref("");
     </t-form>
   </ContentLayout>
 </template>
+
+<style scoped>
+.r-cd-out-loading {
+  width: 100%;
+}
+</style>

@@ -1,10 +1,10 @@
+import { validateToken } from "@/lib/util/authFunction";
+import HomeView from "@/pages/base/HomeView.vue";
+import { baseRecords, dataRecords, drawRecords, mathRecords, mystRecords, utilRecords } from "@/router/records";
+import { useAuthStore } from "@/store/comps/auth";
+import { MessagePlugin } from "tdesign-vue-next";
 import type { RouteRecordRaw } from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
-import { useAuthStore } from "@/store/comps/auth";
-import { validateToken } from "@/lib/util/authFunction";
-import { baseRecords, dataRecords, drawRecords, mystRecords, utilRecords } from "@/router/records";
-import { MessagePlugin } from "tdesign-vue-next";
-import HomeView from "@/pages/base/HomeView.vue";
 
 const records: RouteRecordRaw[] = [
   {
@@ -16,6 +16,7 @@ const records: RouteRecordRaw[] = [
   ...dataRecords,
   ...mystRecords,
   ...drawRecords,
+  ...mathRecords,
   ...utilRecords,
   {
     path: "/error",

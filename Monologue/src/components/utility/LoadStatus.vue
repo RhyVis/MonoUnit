@@ -1,6 +1,6 @@
 <script lang="tsx" setup>
-import { computed } from "vue";
 import { CheckCircleIcon, HelpCircleIcon } from "tdesign-icons-vue-next";
+import { computed } from "vue";
 
 const props = defineProps<{
   name: string;
@@ -12,17 +12,21 @@ const theme = computed(() => (props.loading ? "default" : "success"));
 </script>
 
 <template>
-  <div :id="id" style="width: fit-content">
-    <t-loading :delay="100" :loading="loading">
+  <div class="r-ls-div" :id="id">
+    <t-loading size="small" :delay="100" :loading="loading">
       <t-tag :theme="theme" variant="light">
         <template #icon>
           <HelpCircleIcon v-if="loading" />
           <CheckCircleIcon v-else />
         </template>
-        <span style="user-select: none">{{ label }}</span>
+        <span class="r-no-select">{{ label }}</span>
       </t-tag>
     </t-loading>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.r-ls-div {
+  width: fit-content;
+}
+</style>

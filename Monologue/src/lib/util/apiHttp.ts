@@ -1,5 +1,5 @@
+import type { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import axios from "axios";
-import type { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 
 const instance = axios.create();
 

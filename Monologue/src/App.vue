@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import BaseLayout from "@/layout/frame/BaseLayout.vue";
-import ContentHeader from "@/layout/basic/ContentHeader.vue";
-import ContentFooter from "@/layout/basic/ContentFooter.vue";
 import ContentAside from "@/layout/basic/ContentAside.vue";
-import { onMounted } from "vue";
-import { RouterView } from "vue-router";
+import ContentFooter from "@/layout/basic/ContentFooter.vue";
+import ContentHeader from "@/layout/basic/ContentHeader.vue";
+import BaseLayout from "@/layout/frame/BaseLayout.vue";
 import { loadFonts } from "@/lib/util/fontLoader";
 import { useGlobalStore } from "@/store/global";
 import { MessagePlugin } from "tdesign-vue-next";
+import { onMounted } from "vue";
+import { RouterView } from "vue-router";
 
 const global = useGlobalStore();
 
@@ -56,7 +56,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <BaseLayout style="height: 100vh">
+  <BaseLayout class="r-app-base-layout">
     <template #aside>
       <ContentAside />
     </template>
@@ -76,7 +76,11 @@ onMounted(() => {
   </BaseLayout>
 </template>
 
-<style scoped>
+<style scoped lang="less">
+.r-app-base-layout {
+  height: 100vh;
+}
+
 .route-enter-active {
   transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }

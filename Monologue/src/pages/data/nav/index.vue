@@ -3,7 +3,7 @@ import ContentLayout from "@/layout/frame/ContentLayout.vue";
 import { ref } from "vue";
 import { MessagePlugin, type TableProps } from "tdesign-vue-next";
 import { apiGet } from "@/lib/util/apiMethods";
-import type { NavData } from "@/pages/data/nav/scripts/navType"
+import type { NavData } from "@/pages/data/nav/scripts/navType";
 
 const columns = ref<TableProps["columns"]>([
   { colKey: "id", title: "ID", width: 40, align: "center" },
@@ -62,9 +62,3 @@ try {
     />
   </ContentLayout>
 </template>
-
-<style scoped>
-.r-no-select {
-  user-select: none;
-}
-</style>

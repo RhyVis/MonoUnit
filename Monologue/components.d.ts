@@ -7,7 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AdvancedOptContainer: typeof import('./src/components/menu/AdvancedOptContainer.vue')['default']
+    AdvOptContainer: typeof import('./src/components/menu/AdvOptContainer.vue')['default']
     ButtonClear: typeof import('./src/components/btn/ButtonClear.vue')['default']
     ButtonCopy: typeof import('./src/components/btn/ButtonCopy.vue')['default']
     ButtonRead: typeof import('./src/components/btn/ButtonRead.vue')['default']

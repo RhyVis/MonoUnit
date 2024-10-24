@@ -3,18 +3,16 @@ import { computed, onMounted, ref } from "vue";
 import { getVersion } from "@/lib/util/apiMethods";
 import { MessagePlugin } from "tdesign-vue-next";
 import { ArrowLeftIcon, RefreshIcon } from "tdesign-icons-vue-next";
-import { decimalRadixValExtended } from "@/pages/util/radix/scripts/radix";
+import { decimalRadixValExtended } from "@/pages/math/radix/scripts/radix";
 import VersionView from "@/assets/local/version.json";
 import moment from "moment";
-import useProxy from "@/lib/util/useProxy";
-
-const proxy = useProxy();
+import useStatic from "@/lib/util/useStatic";
 
 const loading = ref(true);
 
 const versionFont = ref({
   fontWeight: "bold",
-  fontFamily: proxy.$fontFamily,
+  fontFamily: useStatic().fontFamily,
 });
 
 const vLocal = VersionView.compileTime;
@@ -92,20 +90,20 @@ onMounted(async () => {
 </script>
 
 <template>
-  <t-card :loading="loading" class="r-v-check-card-override" style="width: max-content">
-    <t-space direction="vertical" class="r-no-select" :size="8">
+  <t-card class="r-vc-card r-vc-card-override" :loading="loading">
+    <t-space class="r-no-select" direction="vertical" :size="8">
       <div>
-        <t-tag :theme="vDisplay.theme" size="small" :icon="vDisplay.icon">
+        <t-tag :theme="vDisplay.theme" :icon="vDisplay.icon" size="small">
           <span :style="versionFont">{{ vDisplay.value }}</span>
         </t-tag>
       </div>
       <div v-if="vState !== 0">
-        <t-space style="font-family: serif">
+        <t-space>
           <t-button size="small" shape="circle" :theme="vDisplay.theme" @click="handleUpdate">
             <RefreshIcon />
           </t-button>
           <ArrowLeftIcon />
-          <t-text :code="true">点击刷新页面以更新</t-text>
+          <t-tag class="r-vc-refresh-font">点击刷新页面以更新</t-tag>
         </t-space>
       </div>
     </t-space>
@@ -118,7 +116,7 @@ onMounted(async () => {
     :close-btn="false"
     @confirm="handleUpdate"
   >
-    <t-space direction="vertical" class="r-no-select">
+    <t-space class="r-no-select" direction="vertical">
       <div>检查到新版本：</div>
       <div>
         <span>构建版本：</span>
@@ -134,11 +132,13 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.r-no-select {
-  user-select: none;
+.r-vc-card {
+  width: max-content;
+  .r-vc-refresh-font {
+    font-weight: bold;
+  }
 }
-
-.r-v-check-card-override :deep(.t-card__body) {
+.r-vc-card-override :deep(.t-card__body) {
   padding: 10px 14px 8px;
 }
 </style>

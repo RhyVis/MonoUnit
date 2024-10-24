@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref } from "vue";
 import { loadAllBaseImg } from "@/pages/draw/ba-banner/scripts/loadBaseImg";
+import { computed, onMounted, ref } from "vue";
 
 const {
   canvasWidth = 900,
@@ -30,7 +30,7 @@ const {
 const fontVal = computed(
   () =>
     `${fontSize}px RoGSanSrfStd-Bd, GlowSansSC, apple-system, BlinkMacSystemFont, Segoe UI,
-    Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif`,
+    Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif, serif`,
 );
 const textMetricsL = ref<TextMetrics | null>();
 const textMetricsR = ref<TextMetrics | null>();
@@ -180,8 +180,8 @@ onMounted(async () => {
 
 <style scoped>
 #ba-banner {
-  border-radius: 8px;
   border: 1px solid #bbb;
+  border-radius: 8px;
   max-width: 100%;
 }
 </style>

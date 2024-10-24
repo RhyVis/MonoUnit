@@ -32,4 +32,4 @@ type DeckInfoSelect = {
   value: string;
 };
 
-export type { Card, CardDisplay, DeckInfo, DeckInfoSelect, DeckInfoInterface };
+export type { Card, CardDisplay, DeckInfo, DeckInfoInterface, DeckInfoSelect };
