@@ -14,10 +14,8 @@ import org.springframework.web.servlet.resource.PathResourceResolver
 @Configuration
 class MvcFallbackConf(
     private val webProperties: WebProperties,
+    @Value("\${user.dir}") private val rootDir: String,
 ) : WebMvcConfigurer {
-    @Value("\${user.dir}")
-    private lateinit var rootDir: String
-
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry
             .addResourceHandler("/**")

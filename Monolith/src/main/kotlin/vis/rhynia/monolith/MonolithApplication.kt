@@ -6,10 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 import vis.rhynia.monolith.core.config.CoreConf
-import vis.rhynia.monolith.yggdrasil.config.YggdrasilConf
+import vis.rhynia.monolith.yggdrasil.config.YgCoreConf
+import vis.rhynia.monolith.yggdrasil.config.YgTextureConf
 
 @SpringBootApplication
-@EnableConfigurationProperties(CoreConf::class, YggdrasilConf::class)
+@EnableConfigurationProperties(CoreConf::class, YgCoreConf::class, YgTextureConf::class)
 class MonolithApplication
 
 fun main(args: Array<String>) {

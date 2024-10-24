@@ -1,6 +1,7 @@
 package vis.rhynia.monolith.yggdrasil.element
 
 import org.springframework.stereotype.Component
+import vis.rhynia.monolith.yggdrasil.util.PreUtil
 import java.awt.image.BufferedImage
 import java.math.BigInteger
 import java.security.MessageDigest
@@ -49,7 +50,9 @@ class Texture(
     }
 
     @Component
-    class Storage
+    class Storage(
+        private val preUtil: PreUtil,
+    )
 }
 
 private fun ByteArray.putInt(
