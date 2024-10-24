@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AdvancedOptContainer from "@/components/menu/AdvOptContainer.vue";
 import ContentLayout from "@/layout/frame/ContentLayout.vue";
-import { radixVal } from "@/pages/util/radix/scripts/radix";
+import { radixVal } from "@/pages/math/radix/scripts/radix";
 import { ArrowRightCircleIcon, RefreshIcon } from "tdesign-icons-vue-next";
 import { MessagePlugin } from "tdesign-vue-next";
 import { computed, reactive, ref } from "vue";
@@ -94,7 +94,7 @@ const handleCharsetOutputReset = () => {
             />
             <t-space :size="4">
               <t-tooltip placement="top" content="按顺序定义基数字符，不允许重复">
-                <t-tag content="输出字符集" style="user-select: none" />
+                <t-tag class="r-no-select" content="输出字符集" />
               </t-tooltip>
               <t-button size="small" theme="default" @click="handleCharsetOutputReset">
                 <RefreshIcon />

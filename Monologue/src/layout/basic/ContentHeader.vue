@@ -25,7 +25,7 @@ const handleAside = () => (store.asideVisible = !store.asideVisible);
           <t-space :size="4">
             <span class="r-ct-hd-content-tt1">MonoUnit</span>
             <span class="r-ct-hd-content-tt2">Toolbox</span>
-            <i class="tw-font-thin r-ct-hd-content-tt">2.0</i>
+            <i class="r-ct-hd-content-tt tw-font-thin">2.0</i>
           </t-space>
         </div>
         <div v-if="dev">

@@ -30,7 +30,7 @@ const {
 const fontVal = computed(
   () =>
     `${fontSize}px RoGSanSrfStd-Bd, GlowSansSC, apple-system, BlinkMacSystemFont, Segoe UI,
-    Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif`,
+    Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif, serif`,
 );
 const textMetricsL = ref<TextMetrics | null>();
 const textMetricsR = ref<TextMetrics | null>();

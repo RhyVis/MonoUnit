@@ -56,7 +56,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <BaseLayout style="height: 100vh">
+  <BaseLayout class="r-app-base-layout">
     <template #aside>
       <ContentAside />
     </template>
@@ -76,7 +76,11 @@ onMounted(() => {
   </BaseLayout>
 </template>
 
-<style scoped>
+<style scoped lang="less">
+.r-app-base-layout {
+  height: 100vh;
+}
+
 .route-enter-active {
   transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }

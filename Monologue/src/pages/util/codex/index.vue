@@ -79,7 +79,7 @@ const result = ref("");
       </t-tabs>
       <div class="mt-4">
         <t-form-item label="输出结果">
-          <t-loading size="small" :loading="loading" :delay="400" style="width: 100%">
+          <t-loading class="r-cd-out-loading" size="small" :loading="loading" :delay="400">
             <t-textarea :model-value="result" placeholder="返回内容" :autosize="true" :readonly="true" />
           </t-loading>
         </t-form-item>
@@ -99,3 +99,9 @@ const result = ref("");
     </t-form>
   </ContentLayout>
 </template>
+
+<style scoped>
+.r-cd-out-loading {
+  width: 100%;
+}
+</style>

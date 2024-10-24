@@ -24,10 +24,6 @@ const fontList = [
     url: "/font/RoGSanSrfStd-Bd_CJK.woff2",
   },
   {
-    name: "RoGSanSrfStd-Bd",
-    url: "/font/RoGSanSrfStd-Bd-Original.woff2",
-  },
-  {
     name: "GlowSans",
     url: "/font/GlowSansSC-Normal-Heavy.otf",
   },

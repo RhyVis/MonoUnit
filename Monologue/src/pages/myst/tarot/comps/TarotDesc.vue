@@ -1,31 +1,38 @@
 <script setup lang="ts">
 import type { CardDisplay } from "@/lib/type/typeTarot";
+import { intToRoman } from "@/pages/math/roman/scripts/romanNum";
+import { computed } from "vue";
 
-defineProps<{
+const { card, index } = defineProps<{
   card: CardDisplay;
   index: number;
 }>();
 
-const revText = (rev: boolean) => (rev ? "逆位" : "正位");
-const revDesc = (card: CardDisplay) => (card.data.rev ? card.data.desc.reverse : card.data.desc.upright);
+const indexNum = computed(() => intToRoman(index + 1));
+const revText = computed(() => (card.data.rev ? "逆位" : "正位"));
+const revDesc = computed(() => (card.data.rev ? card.data.desc.reverse : card.data.desc.upright));
+
+const handleHash = () => {
+  location.hash = `tarot-main-${index}`;
+};
 </script>
 
 <template>
-  <t-card class="mb-2" :header-bordered="true">
+  <t-card class="mb-2" :header-bordered="true" :id="`tarot-desc-${index}`">
     <template #title>
-      <span>{{ index + 1 + "号位 " }}</span>
+      <span @click="handleHash">{{ indexNum }}</span>
     </template>
     <template #subtitle>
-      <span>
+      <t-space :size="4">
         <span>{{ card.data.loc }}</span>
-        <i style="font-size: xx-small"> {{ card.data.name }}</i>
-      </span>
+        <i class="r-tr-desc-tt"> {{ card.data.name }}</i>
+      </t-space>
     </template>
     <template #actions>
-      <t-tag class="r-tarot-desc-tag" theme="primary">{{ revText(card.data.rev) }}</t-tag>
+      <t-tag class="r-tr-desc-tag" @click="handleHash" theme="primary">{{ revText }}</t-tag>
     </template>
     <div>
-      <t-title level="h6" :content="revDesc(card)" />
+      <t-title level="h6" :content="revDesc" />
       <t-paragraph v-if="card.data.desc.desc.length > 0">
         <t-text v-for="(line, index) in card.data.desc.desc" :key="index" :content="line" />
       </t-paragraph>
@@ -34,7 +41,10 @@ const revDesc = (card: CardDisplay) => (card.data.rev ? card.data.desc.reverse :
 </template>
 
 <style scoped>
-.r-tarot-desc-tag {
+.r-tr-desc-tt {
+  font-size: xx-small;
+}
+.r-tr-desc-tag {
   font-weight: bold;
   user-select: none;
 }

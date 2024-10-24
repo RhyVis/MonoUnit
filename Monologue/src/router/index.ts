@@ -1,6 +1,6 @@
 import { validateToken } from "@/lib/util/authFunction";
 import HomeView from "@/pages/base/HomeView.vue";
-import { baseRecords, dataRecords, drawRecords, mystRecords, utilRecords } from "@/router/records";
+import { baseRecords, dataRecords, drawRecords, mathRecords, mystRecords, utilRecords } from "@/router/records";
 import { useAuthStore } from "@/store/comps/auth";
 import { MessagePlugin } from "tdesign-vue-next";
 import type { RouteRecordRaw } from "vue-router";
@@ -16,6 +16,7 @@ const records: RouteRecordRaw[] = [
   ...dataRecords,
   ...mystRecords,
   ...drawRecords,
+  ...mathRecords,
   ...utilRecords,
   {
     path: "/error",

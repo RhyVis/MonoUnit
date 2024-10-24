@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ProjectIcon from "@/assets/icon.svg";
-import { dataRecords, drawRecords, mystRecords, utilRecords } from "@/router/records";
+import { dataRecords, drawRecords, mathRecords, mystRecords, utilRecords } from "@/router/records";
 import { useAuthStore } from "@/store/comps/auth";
 import { useGlobalStore } from "@/store/global";
 import {
@@ -9,6 +9,7 @@ import {
   FileUnknownIcon,
   HomeIcon,
   Icon,
+  Numbers01Icon,
   PenBrushIcon,
   RelationIcon,
   ToolsIcon,
@@ -96,6 +97,24 @@ onMounted(() => {
           <span>Draw</span>
         </template>
         <div v-for="item in drawRecords" :key="item.name">
+          <t-menu-item v-if="!(item.meta.auth && !auth.valid)" :to="item.path" :value="item.name" @click="handleClose">
+            <template #icon>
+              <icon v-if="item.meta.icon" :name="item.meta.icon" />
+            </template>
+            <span>{{ item.meta.title }}</span>
+          </t-menu-item>
+        </div>
+      </t-submenu>
+
+      <!--Math-->
+      <t-submenu value="math">
+        <template #icon>
+          <Numbers01Icon />
+        </template>
+        <template #title>
+          <span>Math</span>
+        </template>
+        <div v-for="item in mathRecords" :key="item.name">
           <t-menu-item v-if="!(item.meta.auth && !auth.valid)" :to="item.path" :value="item.name" @click="handleClose">
             <template #icon>
               <icon v-if="item.meta.icon" :name="item.meta.icon" />

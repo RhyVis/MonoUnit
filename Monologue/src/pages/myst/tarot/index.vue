@@ -52,6 +52,7 @@ const handleSelect = () => {
   result.value.length = 0;
 };
 const handleDraw = async () => {
+  location.hash = "";
   loading.value = true;
   try {
     store.update(query, conf);
